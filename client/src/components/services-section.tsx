@@ -1,6 +1,8 @@
 import { BarChart3, Cloud, Shield, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
+import { Link } from "wouter";
 
 export default function ServicesSection() {
   const services = [
@@ -30,13 +32,13 @@ export default function ServicesSection() {
   return (
     <motion.section 
       id="services" 
-      className="py-20 bg-white"
+      className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden circuit-pattern"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
@@ -77,7 +79,7 @@ export default function ServicesSection() {
               whileHover={{ y: -10 }}
             >
               <Card
-                className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden h-full"
+                className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden h-full card-hover tech-grid relative"
                 data-testid={`service-card-${index}`}
               >
                 <CardContent className="p-8">
@@ -114,6 +116,29 @@ export default function ServicesSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05, y: -3 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link href="/services">
+              <Button
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                data-testid="view-all-services"
+              >
+                View All Services
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </motion.section>
   );

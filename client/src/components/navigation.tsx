@@ -85,30 +85,30 @@ export default function Navigation() {
                     Home
                   </Link>
                 </motion.div>
-                <motion.button
-                  onClick={() => {
-                    const route = handleNavigation("services");
-                    if (route) window.location.href = route;
-                  }}
-                  className="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
-                  data-testid="nav-services"
+                <motion.div
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Services
-                </motion.button>
-                <motion.button
-                  onClick={() => {
-                    const route = handleNavigation("about");
-                    if (route) window.location.href = route;
-                  }}
-                  className="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
-                  data-testid="nav-about"
+                  <Link 
+                    href="/services"
+                    className="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                    data-testid="nav-services"
+                  >
+                    Services
+                  </Link>
+                </motion.div>
+                <motion.div
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  About
-                </motion.button>
+                  <Link 
+                    href="/about"
+                    className="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                    data-testid="nav-about"
+                  >
+                    About
+                  </Link>
+                </motion.div>
                 <motion.div
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -121,18 +121,42 @@ export default function Navigation() {
                     Our Team
                   </Link>
                 </motion.div>
-                <motion.button
-                  onClick={() => {
-                    const route = handleNavigation("contact");
-                    if (route) window.location.href = route;
-                  }}
-                  className="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
-                  data-testid="nav-contact"
+                <motion.div
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Contact
-                </motion.button>
+                  <Link 
+                    href="/partners"
+                    className="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                    data-testid="nav-partners"
+                  >
+                    Partners
+                  </Link>
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link 
+                    href="/careers"
+                    className="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                    data-testid="nav-careers"
+                  >
+                    Careers
+                  </Link>
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link 
+                    href="/contact"
+                    className="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                    data-testid="nav-contact"
+                  >
+                    Contact
+                  </Link>
+                </motion.div>
               </div>
             </div>
 
@@ -149,14 +173,13 @@ export default function Navigation() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  onClick={() => {
-                    const route = handleNavigation("contact");
-                    if (route) window.location.href = route;
-                  }}
+                  asChild
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
                   data-testid="cta-button"
                 >
-                  Get Started
+                  <Link href="/contact">
+                    Get Started
+                  </Link>
                 </Button>
               </motion.div>
             </div>
@@ -208,30 +231,32 @@ export default function Navigation() {
                     Home
                   </Link>
                 </motion.div>
-                <motion.button
-                  onClick={() => {
-                    const route = handleNavigation("services");
-                    if (route) window.location.href = route;
-                  }}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 w-full text-left"
-                  data-testid="mobile-nav-services"
+                <motion.div
                   whileHover={{ x: 5, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Services
-                </motion.button>
-                <motion.button
-                  onClick={() => {
-                    const route = handleNavigation("about");
-                    if (route) window.location.href = route;
-                  }}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 w-full text-left"
-                  data-testid="mobile-nav-about"
+                  <Link
+                    href="/services"
+                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 w-full text-left"
+                    data-testid="mobile-nav-services"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Services
+                  </Link>
+                </motion.div>
+                <motion.div
                   whileHover={{ x: 5, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  About
-                </motion.button>
+                  <Link
+                    href="/about"
+                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 w-full text-left"
+                    data-testid="mobile-nav-about"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    About
+                  </Link>
+                </motion.div>
                 <motion.div
                   whileHover={{ x: 5, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
                   whileTap={{ scale: 0.98 }}
@@ -245,18 +270,45 @@ export default function Navigation() {
                     Our Team
                   </Link>
                 </motion.div>
-                <motion.button
-                  onClick={() => {
-                    const route = handleNavigation("contact");
-                    if (route) window.location.href = route;
-                  }}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 w-full text-left"
-                  data-testid="mobile-nav-contact"
+                <motion.div
                   whileHover={{ x: 5, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Contact
-                </motion.button>
+                  <Link
+                    href="/partners"
+                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 w-full text-left"
+                    data-testid="mobile-nav-partners"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Partners
+                  </Link>
+                </motion.div>
+                <motion.div
+                  whileHover={{ x: 5, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Link
+                    href="/careers"
+                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 w-full text-left"
+                    data-testid="mobile-nav-careers"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Careers
+                  </Link>
+                </motion.div>
+                <motion.div
+                  whileHover={{ x: 5, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Link
+                    href="/contact"
+                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 w-full text-left"
+                    data-testid="mobile-nav-contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </motion.div>
               </motion.div>
             </motion.div>
           )}

@@ -1,0 +1,149 @@
+{
+  "jobOpenings": [
+    {
+      "id": 1,
+      "title": "Senior Data Engineer",
+      "department": "Data Engineering",
+      "location": "Remote / Hyderabad, India",
+      "type": "Full-time",
+      "experience": "5-8 years",
+      "salary": "$80,000 - $120,000",
+      "description": "Design and implement scalable data pipelines and infrastructure for large-scale data processing.",
+      "requirements": [
+        "5+ years of experience in data engineering",
+        "Proficiency in Python, SQL, and big data technologies",
+        "Experience with Apache Spark, Kafka, or Airflow",
+        "Knowledge of cloud platforms (AWS, Azure, GCP)",
+        "Strong problem-solving and analytical skills"
+      ],
+      "benefits": ["Health Insurance", "Remote Work", "Learning Budget", "Stock Options"],
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "title": "Full Stack Developer",
+      "department": "App Services",
+      "location": "Edison, NJ / Remote",
+      "type": "Full-time",
+      "experience": "3-5 years",
+      "salary": "$70,000 - $100,000",
+      "description": "Develop and maintain web applications using modern technologies and frameworks.",
+      "requirements": [
+        "3+ years of full-stack development experience",
+        "Proficiency in React, Node.js, and TypeScript",
+        "Experience with databases (PostgreSQL, MongoDB)",
+        "Knowledge of cloud services and DevOps practices",
+        "Strong understanding of software development lifecycle"
+      ],
+      "benefits": ["Health Insurance", "Flexible Hours", "Professional Development", "401(k)"],
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "title": "Cloud Solutions Architect",
+      "department": "Cloud Services",
+      "location": "Frisco, TX / Remote",
+      "type": "Full-time",
+      "experience": "7-10 years",
+      "salary": "$100,000 - $140,000",
+      "description": "Design and implement cloud architecture solutions for enterprise clients.",
+      "requirements": [
+        "7+ years of cloud architecture experience",
+        "AWS/Azure/GCP certifications preferred",
+        "Experience with infrastructure as code (Terraform, CloudFormation)",
+        "Strong understanding of networking and security",
+        "Excellent communication and client-facing skills"
+      ],
+      "benefits": ["Health Insurance", "Certification Support", "Travel Opportunities", "Bonus"],
+      "isActive": true
+    },
+    {
+      "id": 4,
+      "title": "Business Intelligence Analyst",
+      "department": "Analytics",
+      "location": "London, UK / Remote",
+      "type": "Full-time",
+      "experience": "2-4 years",
+      "salary": "£45,000 - £65,000",
+      "description": "Analyze business data and create insights to drive strategic decision-making.",
+      "requirements": [
+        "2+ years of BI/analytics experience",
+        "Proficiency in SQL, Power BI, or Tableau",
+        "Strong analytical and problem-solving skills",
+        "Experience with data modeling and visualization",
+        "Excellent presentation and communication skills"
+      ],
+      "benefits": ["Health Insurance", "Remote Work", "Training Budget", "Pension"],
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "title": "DevOps Engineer",
+      "department": "IT Services",
+      "location": "Windsor, Canada / Remote",
+      "type": "Full-time",
+      "experience": "4-6 years",
+      "salary": "CAD $75,000 - $105,000",
+      "description": "Implement and maintain CI/CD pipelines and infrastructure automation.",
+      "requirements": [
+        "4+ years of DevOps/infrastructure experience",
+        "Experience with Docker, Kubernetes, and Jenkins",
+        "Knowledge of Linux systems and shell scripting",
+        "Experience with monitoring tools (Prometheus, Grafana)",
+        "Strong automation and configuration management skills"
+      ],
+      "benefits": ["Health Insurance", "Remote Work", "Equipment Budget", "RRSP"],
+      "isActive": true
+    }
+  ],
+  "companyBenefits": [
+    {
+      "title": "Health & Wellness",
+      "description": "Comprehensive health insurance, dental, and vision coverage for you and your family.",
+      "icon": "Heart"
+    },
+    {
+      "title": "Remote Work",
+      "description": "Flexible work arrangements with the option to work remotely or from our global offices.",
+      "icon": "Laptop"
+    },
+    {
+      "title": "Learning & Growth",
+      "description": "Professional development budget, certification support, and continuous learning opportunities.",
+      "icon": "Trophy"
+    },
+    {
+      "title": "Competitive Salary",
+      "description": "Market competitive salaries with performance bonuses and stock option plans.",
+      "icon": "DollarSign"
+    },
+    {
+      "title": "Work-Life Balance",
+      "description": "Flexible working hours, unlimited PTO, and a supportive work environment.",
+      "icon": "Coffee"
+    },
+    {
+      "title": "Global Opportunities",
+      "description": "Work with international teams and clients across four continents.",
+      "icon": "Globe"
+    }
+  ],
+  "companyValues": [
+    {
+      "title": "Innovation",
+      "description": "We foster creativity and embrace cutting-edge technologies to solve complex challenges."
+    },
+    {
+      "title": "Collaboration",
+      "description": "We believe in the power of teamwork and building strong relationships with our clients."
+    },
+    {
+      "title": "Excellence",
+      "description": "We strive for excellence in everything we do and continuously improve our services."
+    },
+    {
+      "title": "Integrity",
+      "description": "We operate with transparency, honesty, and ethical business practices."
+    }
+  ]
+}
