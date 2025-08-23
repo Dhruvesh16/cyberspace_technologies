@@ -1,38 +1,56 @@
-import { BarChart3, Cloud, Shield, ArrowRight } from "lucide-react";
+import { BarChart3, Cloud, Shield, ArrowRight, Zap, Database, Smartphone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { Link } from "wouter";
 
 export default function ServicesSection() {
   const services = [
     {
-      icon: <BarChart3 className="w-8 h-8 text-white" />,
+      icon: <Database className="w-8 h-8 text-purple-400" />,
       title: "Data Engineering",
-      description: "We assist customers in organizing and structuring data for actionable insights via clear data pipelines, warehouse modernization, and real-time data ingestion.",
-      gradient: "from-blue-500 to-cyan-500",
-      href: "#data-engineering"
+      description: "Data Warehouse Modernization, Real-time data onboarding, Data Governance & Observability, and Unique MDM implementation expertise.",
+      gradient: "from-purple-500/20 to-cyan-500/20",
+      glow: "shadow-purple-500/20",
+      href: "/services"
     },
     {
-      icon: <Cloud className="w-8 h-8 text-white" />,
-      title: "Cloud Services", 
-      description: "Provide re-host migration, refactoring, cloud optimization and FinOps services for clients on AWS, Azure and Google Cloud platforms.",
-      gradient: "from-purple-500 to-pink-500",
-      href: "#cloud-services"
+      icon: <BarChart3 className="w-8 h-8 text-cyan-400" />,
+      title: "Analytics", 
+      description: "Modern Data Analytics, AI/ML Analytics Engineering, and Process Mining Analytics with real-time delivery and AI automation.",
+      gradient: "from-cyan-500/20 to-purple-500/20",
+      glow: "shadow-cyan-500/20",
+      href: "/services"
     },
     {
-      icon: <Shield className="w-8 h-8 text-white" />,
-      title: "Cyber Security",
-      description: "As cyberattacks become more common and sophisticated, we provide a comprehensive variety of cyber security solutions to protect your organization.",
-      gradient: "from-emerald-500 to-teal-500",
-      href: "#cyber-security"
+      icon: <Cloud className="w-8 h-8 text-purple-400" />,
+      title: "Cloud Services",
+      description: "AWS/Azure/GCP Cloud Infrastructure, Microservices, Enterprise Architecture consulting, and DBA as a service solutions.",
+      gradient: "from-purple-500/20 to-cyan-500/20",
+      glow: "shadow-purple-500/20",
+      href: "/services"
+    },
+    {
+      icon: <Smartphone className="w-8 h-8 text-cyan-400" />,
+      title: "App Services",
+      description: "Reactive and Progressive Web Apps, Mobile App Development, and Microservices with Service Mesh architecture.",
+      gradient: "from-cyan-500/20 to-purple-500/20",
+      glow: "shadow-cyan-500/20",
+      href: "/services"
+    },
+    {
+      icon: <Shield className="w-8 h-8 text-purple-400" />,
+      title: "IT Services",
+      description: "IT Management, Data Security, Business Reform, Infrastructure Planning, Firewall Advance, and Desktop Computing solutions.",
+      gradient: "from-purple-500/20 to-cyan-500/20",
+      glow: "shadow-purple-500/20",
+      href: "/services"
     }
   ];
 
   return (
     <motion.section 
       id="services" 
-      className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden circuit-pattern"
+      className="py-20 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -47,97 +65,82 @@ export default function ServicesSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" 
+            className="text-4xl md:text-5xl font-bold text-white mb-4" 
             data-testid="services-title"
-            initial={{ opacity: 0, y: 30 }}
+          >
+            Services We <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Deliver</span>
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Services We <span className="gradient-text">Deliver</span>
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto" 
-            data-testid="services-description"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Preparing for your success, we provide truly prominent IT solutions that transform, automate, and optimize your digital operations.
+            We offer a range of solutions and services that include Data Engineering and Analytics, Cloud FinOps, Migration, GenAI and other cutting-edge technologies to support your organization.
           </motion.p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {services.map((service, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 60 }}
+              key={service.title}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
-              whileHover={{ y: -10 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              whileHover={{ y: -5 }}
+              className="group"
             >
-              <Card
-                className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden h-full card-hover tech-grid relative"
-                data-testid={`service-card-${index}`}
-              >
-                <CardContent className="p-8">
+              <Card className={`luna-card h-full transition-all duration-300 hover:${service.glow} hover:shadow-2xl border-0`}>
+                <CardContent className="p-8 text-center h-full flex flex-col">
                   <motion.div 
-                    className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6`}
-                    whileHover={{ rotate: 5, scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400 }}
+                    className={`w-16 h-16 rounded-full bg-gradient-to-r ${service.gradient} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform`}
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
                   >
                     {service.icon}
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4" data-testid={`service-title-${index}`}>
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 mb-6" data-testid={`service-description-${index}`}>
+                  <p className="text-gray-400 leading-relaxed flex-grow mb-6">
                     {service.description}
                   </p>
-                  <motion.a
-                    href={service.href}
-                    className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors"
-                    data-testid={`service-link-${index}`}
+                  <motion.div
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
-                    Discover now
-                    <motion.div
-                      whileHover={{ x: 3 }}
-                      transition={{ type: "spring", stiffness: 400 }}
+                    <Button 
+                      variant="ghost" 
+                      className="text-purple-400 hover:text-cyan-400 hover:bg-purple-400/10 group-hover:bg-purple-400/20 transition-all p-0"
+                      onClick={() => window.location.href = service.href}
                     >
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </motion.div>
-                  </motion.a>
+                      Learn More 
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </motion.div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
 
+        {/* Call to action */}
         <motion.div 
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 40 }}
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <motion.div
-            whileHover={{ scale: 1.05, y: -3 }}
-            whileTap={{ scale: 0.95 }}
+          <Button 
+            className="luna-button text-lg px-8 py-4 group"
+            onClick={() => window.location.href = "/contact"}
           >
-            <Link href="/services">
-              <Button
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
-                data-testid="view-all-services"
-              >
-                View All Services
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </motion.div>
+            <Zap className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+            Start Your Transformation
+          </Button>
         </motion.div>
       </div>
     </motion.section>

@@ -1,490 +1,412 @@
-import { motion } from "framer-motion";
-import { Card, CardContent } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
-import { Button } from "../components/ui/button";
-import Navigation from "../components/navigation";
-import Footer from "../components/footer";
-import { Link } from "wouter";
-import { 
-  Shield, 
-  Globe, 
-  Users, 
-  Trophy,
-  Target,
-  Heart,
-  MapPin,
-  Phone,
-  Download,
-  CheckCircle,
-  BarChart3,
-  Cloud,
-  Database,
-  Cpu
-} from "lucide-react";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
+import { motion } from "motion/react";
+import { Target, Users, Rocket, Download, ExternalLink, Shield, Globe, TrendingUp, Award, Clock, CheckCircle } from "lucide-react";
 
 export default function About() {
-  const stats = [
-    { number: "22+", label: "Years of Experience" },
-    { number: "500+", label: "Projects Delivered" },
-    { number: "50+", label: "Happy Clients" },
-    { number: "4", label: "Global Offices" }
-  ];
-
-  const values = [
-    {
-      icon: Shield,
-      title: "Data Protection",
-      description: "We absolutely understand the criticality of data protection and building secure applications without compromising functionality."
-    },
-    {
-      icon: Target,
-      title: "Proven Methods",
-      description: "Efficient methods of approach that have already been proven effective in delivering successful IT solutions."
-    },
-    {
-      icon: Users,
-      title: "Expert Team",
-      description: "Superb abilities and expertise with dedicated staff and consultants who look beyond the status quo."
-    },
-    {
-      icon: Heart,
-      title: "Client Partnership",
-      description: "We collaborate with clients to create ground-breaking innovations and new business solutions."
-    }
-  ];
-
-  const services = [
-    {
-      icon: Database,
-      name: "Data Engineering",
-      description: "Transform raw data into actionable insights"
-    },
-    {
-      icon: BarChart3,
-      name: "Analytics",
-      description: "Advanced analytics and business intelligence"
-    },
-    {
-      icon: Cloud,
-      name: "Cloud Services",
-      description: "Cloud migration and optimization solutions"
-    },
-    {
-      icon: Cpu,
-      name: "App Services",
-      description: "Custom application development and maintenance"
-    }
-  ];
-
-  const locations = [
-    {
-      country: "United States",
-      address: "2015 RT 27 South, STE 234, Edison, NJ 08817",
-      address2: "4300 Punjab Way, STE 280, Frisco, TX 75033",
-      phone: "+1 732-515-9299"
-    },
-    {
-      country: "India",
-      address: "Suite # 414, Manjeera Magestic Commercial, JNTU-HITech City Road, Hyderabad-500085",
-      phone: "+91 9182273913"
-    },
-    {
-      country: "United Kingdom",
-      address: "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ",
-      phone: "+44 7770695162"
-    },
-    {
-      country: "Canada",
-      address: "2279 Mckay Avenue, Windsor, Ontario, N9B3W6",
-      phone: "+1 (519) 984-7976"
-    }
-  ];
-
-  const whyChooseUs = [
-    "Expertise in data and analytics, digital transformation, and cyber security",
-    "Comprehensive range of solutions tailored to meet specific client needs",
-    "Cutting-edge solutions that help organizations make data-driven decisions",
-    "Highly skilled and experienced team of experts",
-    "Investment in research and development to stay at the forefront of technology",
-    "Proven track record of delivering measurable results and ROI"
-  ];
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Navigation />
+      
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-4xl mx-auto text-center">
+      <motion.section 
+        className="pt-32 pb-20 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-cyan-900/20"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                About
+              </span>{" "}
+              Us
+            </h1>
+            <p className="text-2xl text-gray-300 max-w-4xl mx-auto mb-12">
+              Our IT services ensure Your Success
+            </p>
+            
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              {[
+                { icon: <Clock className="w-8 h-8" />, number: "22+", label: "Years Experience" },
+                { icon: <Users className="w-8 h-8" />, number: "500+", label: "Clients Served" },
+                { icon: <Globe className="w-8 h-8" />, number: "50+", label: "Countries" },
+                { icon: <Award className="w-8 h-8" />, number: "99%", label: "Success Rate" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="text-purple-400 mb-2 flex justify-center">
+                    {stat.icon}
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* About US Section */}
+      <motion.section 
+        className="py-20 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <Badge variant="outline" className="mb-4 px-4 py-2 text-sm">
-                About CyberSpace Technologies
-              </Badge>
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                Leading <span className="gradient-text">IT Solutions</span> Provider
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                With 22+ years of experience, we collaborate with industry experts to deliver 
-                innovative solutions to complex business challenges, empowering clients to 
-                uncover the value of their data.
+              <h2 className="text-4xl font-bold text-white mb-6">
+                <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                  About
+                </span>{" "}
+                CyberSpace Technologies
+              </h2>
+              <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                We at CST absolutely understand the criticality of data protection and the importance of building secure applications without compromising the functionality and business goals.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                  asChild
-                >
-                  <a href="/CYBER-SPACE-JAN-2025.pdf" download="CyberSpace-Services-2025.pdf" target="_blank" rel="noopener noreferrer">
-                    <Download className="mr-2 h-5 w-5" />
-                    Download Services PDF
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg">
-                  Contact Us
-                </Button>
+              <div className="space-y-4">
+                {[
+                  "Data Protection & Security",
+                  "Innovative IT Solutions",
+                  "24/7 Support & Monitoring",
+                  "Proven Track Record"
+                ].map((item, index) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex items-center text-gray-300"
+                  >
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
+                    {item}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="luna-card p-8">
+                <div className="grid grid-cols-2 gap-6">
+                  {[
+                    { icon: <Shield className="w-12 h-12 text-purple-400" />, title: "Secure", desc: "Enterprise-grade security protocols" },
+                    { icon: <TrendingUp className="w-12 h-12 text-cyan-400" />, title: "Scalable", desc: "Solutions that grow with your business" },
+                    { icon: <Globe className="w-12 h-12 text-purple-400" />, title: "Global", desc: "Worldwide service coverage" },
+                    { icon: <Award className="w-12 h-12 text-cyan-400" />, title: "Certified", desc: "Industry-recognized expertise" }
+                  ].map((feature, index) => (
+                    <motion.div
+                      key={feature.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="text-center"
+                    >
+                      <div className="mb-4">{feature.icon}</div>
+                      <h3 className="font-bold text-white mb-2">{feature.title}</h3>
+                      <p className="text-gray-400 text-sm">{feature.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+      {/* 22 Years Experience Section */}
+      <motion.section 
+        className="py-20 relative overflow-hidden bg-gradient-to-r from-purple-900/10 to-cyan-900/10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="inline-block"
+            >
+              <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+                22
+              </div>
+            </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              YEARS' EXPERIENCE IN IT
+            </h2>
+            <h3 className="text-xl font-semibold text-cyan-400 mb-12">
+              More About Our Success Stories
+            </h3>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            <motion.div 
+              className="lg:col-span-2 luna-card p-8"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Cyber Space Technologies is a leading IT solutions provider in the United States. We collaborate with industry experts to deliver innovative solutions to complex business challenges. Our services, including Cloud FinOps, Migration, ManageIT, Big Data, Data Science, Business Intelligence, Machine Learning, Artificial Intelligence, and Cyber Security, empower our clients to uncover the value of their data.
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="space-y-6"
+            >
+              {[
+                { label: "Data Science Projects", value: "200+" },
+                { label: "Cloud Migrations", value: "150+" },
+                { label: "Security Implementations", value: "300+" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  whileHover={{ scale: 1.05 }}
+                  className="luna-card p-4 text-center"
+                >
+                  <div className="text-2xl font-bold text-purple-400 mb-1">{stat.value}</div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Resources Section */}
+      <motion.section 
+        className="py-20 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl font-bold text-white mb-12">
+              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                RESOURCES
+              </span>
+            </h2>
+            <h3 className="text-2xl font-semibold text-white mb-8">
+              Get a copy of our Services at CyberSpace
+            </h3>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <motion.a
+                href="https://cyberspaceinc.com/wp-content/uploads/2025/01/CYBER-SPACE-JAN-2025.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="luna-button inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Download className="mr-2 w-5 h-5" />
+                Download Our PDF
+              </motion.a>
+              <motion.a
+                href="http://cyspacetech.com/wp-content/uploads/2024/05/Cyber-Space-Solutioning-Overview.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="luna-button inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-purple-600 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <ExternalLink className="mr-2 w-5 h-5" />
+                Solutions Overview
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Why US Section */}
+      <motion.section 
+        className="py-20 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl font-bold text-white mb-4">
+              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                WHY CHOOSE
+              </span>{" "}
+              CYBERSPACE?
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Three key pillars that set us apart in the competitive IT landscape
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Target className="w-12 h-12" />,
+                title: "Proven Effective Methods",
+                shortDesc: "Data-driven solutions with proven track record",
+                description: "Clients come to us because of our expertise in data and analytics, digital transformation, and cyber security. We offer comprehensive solutions that help organizations make data-driven decisions, optimize digital operations, and protect against cyber threats.",
+                gradient: "from-purple-500/20 to-cyan-500/20",
+                iconColor: "text-purple-400"
+              },
+              {
+                icon: <Users className="w-12 h-12" />,
+                title: "Expert Team & Innovation",
+                shortDesc: "Dedicated professionals creating breakthrough solutions",
+                description: "Our dedicated staff and consultants look beyond the status quo to create ground-breaking innovations and new collaborations. We take charge of your company's challenges, rethinking how business solutions can open new markets.",
+                gradient: "from-cyan-500/20 to-purple-500/20",
+                iconColor: "text-cyan-400"
+              },
+              {
+                icon: <Rocket className="w-12 h-12" />,
+                title: "Collaborative Partnership",
+                shortDesc: "Strategic partnerships delivering measurable ROI",
+                description: "Clients value our highly skilled team of experts in their respective fields. We invest in R&D to stay at the forefront of technology, delivering solutions that provide measurable results and ROI for our clients.",
+                gradient: "from-purple-500/20 to-cyan-500/20",
+                iconColor: "text-purple-400"
+              }
+            ].map((item, index) => (
               <motion.div
-                key={index}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
+                key={item.title}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="group"
               >
-                <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <motion.div 
+                  className="luna-card p-8 h-full flex flex-col"
+                  whileHover={{ y: -5 }}
+                >
+                  <motion.div 
+                    className={`w-20 h-20 bg-gradient-to-r ${item.gradient} rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className={item.iconColor}>
+                      {item.icon}
+                    </div>
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-cyan-400 font-medium mb-4 text-sm">
+                    {item.shortDesc}
+                  </p>
+                  <p className="text-gray-300 leading-relaxed flex-grow">
+                    {item.description}
+                  </p>
+                </motion.div>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Resources Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Get Our <span className="gradient-text">Services Overview</span>
-              </h2>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Download our comprehensive services brochure to learn more about our 
-                data engineering, analytics, cloud services, and IT solutions.
-              </p>
-              <div className="mb-4">
-                <a 
-                  href="/CYBER-SPACE-JAN-2025.pdf" 
-                  download="CyberSpace-Services-2025.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-block',
-                    padding: '16px 32px',
-                    backgroundColor: '#2563eb',
-                    color: '#ffffff',
-                    textDecoration: 'none',
-                    borderRadius: '8px',
-                    fontSize: '18px',
-                    fontWeight: 'bold',
-                    border: '2px solid #2563eb'
-                  }}
-                >
-                  Download Services PDF
-                </a>
-              </div>
-              <p className="text-sm text-gray-500 mt-4">
-                PDF • 2025 Edition • Comprehensive Services Overview
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Our <span className="gradient-text">Story</span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-                Cyber Space Technologies is a leading IT solutions provider in the United States. 
-                We collaborate with industry experts to deliver innovative solutions to complex business challenges.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+      {/* Get In Touch Section */}
+      <motion.section 
+        className="py-20 relative overflow-hidden bg-gradient-to-r from-purple-900/20 to-cyan-900/20"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+              Join 500+ companies worldwide who trust CyberSpace Technologies for their IT transformation journey.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <motion.a
+                href="/contact"
+                className="luna-button inline-flex items-center px-10 py-5 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-bold text-lg rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                  Our IT Services Ensure Your Success
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Our services, including Cloud FinOps, Migration, ManageIT, Big Data, Data Science, 
-                  Business Intelligence, Machine Learning, Artificial Intelligence, and Cyber Security, 
-                  empower our clients to uncover the value of their data.
-                </p>
-                <p className="text-gray-600 mb-6">
-                  The demands of a competitive market necessitate a highly complex transformation of the 
-                  technology landscape. Our dedicated staff and consultants look beyond the status quo to 
-                  create ground-breaking innovations and new collaborations.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="grid grid-cols-2 gap-6"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                Get Free Consultation
+              </motion.a>
+              <motion.a
+                href="tel:+1-555-0123"
+                className="luna-button inline-flex items-center px-10 py-5 border-2 border-purple-500 text-purple-400 font-bold text-lg rounded-lg hover:bg-purple-500 hover:text-white transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.98 }}
               >
-                {services.map((service, index) => (
-                  <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-                    <CardContent className="p-6 text-center">
-                      <service.icon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                      <h4 className="font-semibold text-gray-900 mb-2">{service.name}</h4>
-                      <p className="text-sm text-gray-600">{service.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </motion.div>
+                Call Us Now
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Values Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Our <span className="gradient-text">Values</span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                The principles that guide our work and define our commitment to excellence
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow h-full">
-                    <CardContent className="p-6 text-center">
-                      <value.icon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                        {value.title}
-                      </h3>
-                      <p className="text-gray-600">{value.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Why <span className="gradient-text">Choose Us</span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Clients come to us because of our expertise in data and analytics, digital 
-                transformation, and cyber security.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {whyChooseUs.map((reason, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-start space-x-4"
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
-                  <p className="text-gray-700">{reason}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Locations Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Our <span className="gradient-text">Global Presence</span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Serving clients worldwide with offices across multiple continents
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {locations.map((location, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow h-full">
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        <Globe className="h-6 w-6 text-blue-600 mr-2" />
-                        <h3 className="text-lg font-semibold text-gray-900">
-                          {location.country}
-                        </h3>
-                      </div>
-                      <div className="space-y-3">
-                        <div className="flex items-start">
-                          <MapPin className="h-4 w-4 text-gray-400 mr-2 mt-1 flex-shrink-0" />
-                          <p className="text-sm text-gray-600">{location.address}</p>
-                        </div>
-                        {location.address2 && (
-                          <div className="flex items-start">
-                            <MapPin className="h-4 w-4 text-gray-400 mr-2 mt-1 flex-shrink-0" />
-                            <p className="text-sm text-gray-600">{location.address2}</p>
-                          </div>
-                        )}
-                        <div className="flex items-center">
-                          <Phone className="h-4 w-4 text-gray-400 mr-2" />
-                          <p className="text-sm text-gray-600">{location.phone}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Ready to Transform Your Business?
-              </h2>
-              <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-                Reach out to the world's most reliable IT services. Get a free consultation 
-                and discover how we can help your organization succeed.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100">
-                  <Link href="/contact">
-                    Get Free Consultation
-                  </Link>
-                </Button>
-                <a 
-                  href="/CYBER-SPACE-JAN-2025.pdf" 
-                  download="CyberSpace-Services-2025.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '12px 24px',
-                    backgroundColor: 'transparent',
-                    color: '#ffffff',
-                    textDecoration: 'none',
-                    borderRadius: '9999px',
-                    fontSize: '16px',
-                    fontWeight: '500',
-                    border: '2px solid #ffffff',
-                    minHeight: '44px',
-                    transition: 'all 0.2s ease-in-out'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#ffffff';
-                    e.currentTarget.style.color = '#3b82f6';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                    e.currentTarget.style.color = '#ffffff';
-                  }}
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Brochure
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
       <Footer />
     </div>
   );

@@ -1,68 +1,41 @@
 import { motion } from "motion/react";
 
-export default function TeamSection() {
+export default function TeamPreviewSection() {
+  // Show only the first 4 team members for the home page preview
   const teamMembers = [
     {
       name: "Sateesh Kumar Segu",
       role: "Founder & CEO",
-      bio: "Sateesh has a strong business acumen and is able to identify new business opportunities and develop strategies. He has more than two decades of experience providing services to clients.",
+      bio: "Sateesh has a strong business acumen and is able to identify new business opportunities and develop strategies.",
       image: "https://cyberspaceinc.com/wp-content/uploads/2024/05/Sateesh-Pic-1.png",
       gradient: "from-blue-500 to-purple-500"
     },
     {
       name: "Don Adams", 
       role: "VP Software and Automation Engineering",
-      bio: "Don has end-to-end knowledge and experience in the Automation and AI implementation space with over 30 years of business process analysis.",
+      bio: "Don has end-to-end knowledge and experience in the Automation and AI implementation space.",
       image: "https://cyberspaceinc.com/wp-content/uploads/2024/05/Don-Image-1.png",
       gradient: "from-purple-500 to-pink-500"
     },
     {
       name: "Patrick Herman",
       role: "Business Development and Transformation Leader", 
-      bio: "Patrick brings 25 years of experience with Accenture, Avanade and Deloitte, specializing in network, hybrid cloud, and app modernization.",
+      bio: "Patrick brings 25 years of experience with Accenture, Avanade and Deloitte.",
       image: "https://cyberspaceinc.com/wp-content/uploads/2025/05/5-50x42.png",
       gradient: "from-green-500 to-blue-500"
     },
     {
       name: "Venkata Nandipati",
       role: "VP - Technology Delivery & Innovation",
-      bio: "Venkata is a visionary tech leader with 25+ years of experience in IT strategy, digital transformation, and global service delivery.",
+      bio: "Venkata is a visionary tech leader with 25+ years of experience in IT strategy.",
       image: "https://cyberspaceinc.com/wp-content/uploads/2025/05/6-50x42.png", 
       gradient: "from-orange-500 to-red-500"
-    },
-    {
-      name: "Shruti Pattanshetti",
-      role: "Director - Delivery & Operations",
-      bio: "Shruti is a strong leader, capable of managing and mentoring team members and leading cross-functional teams in the delivery of complex solutions.",
-      image: "https://cyberspaceinc.com/wp-content/uploads/2025/01/2-50x42.png",
-      gradient: "from-red-500 to-purple-500"
-    },
-    {
-      name: "Yamini Sharma",
-      role: "Client Partner",
-      bio: "Yamini possesses strong communication and relationship building skills, which enable her to establish trust and credibility with clients.",
-      image: "https://cyberspaceinc.com/wp-content/uploads/2025/05/9-50x42.png",
-      gradient: "from-indigo-500 to-purple-500"
-    },
-    {
-      name: "Raju Yellaula",
-      role: "Sales Director",
-      bio: "As a Sales Director with over 21 years of experience, Raju specializes in driving business growth through staff augmentation and SOW-based project delivery.",
-      image: "https://cyberspaceinc.com/wp-content/uploads/2025/01/Raju-50x42.png",
-      gradient: "from-teal-500 to-blue-500"
-    },
-    {
-      name: "Sanchita Tiwari",
-      role: "HR Manager - Operations",
-      bio: "Sanchita is in charge of HR and operational services, making sure the office has a good vibe and maintaining a safe working environment.",
-      image: "https://cyberspaceinc.com/wp-content/uploads/2025/01/3-50x42.png",
-      gradient: "from-pink-500 to-rose-500"
     }
   ];
 
   return (
     <motion.section 
-      id="team"
+      id="team-preview"
       className="py-20 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -85,7 +58,7 @@ export default function TeamSection() {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -137,6 +110,34 @@ export default function TeamSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* View Full Team Button */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <motion.a
+            href="/team"
+            className="luna-button inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span>View Full Team</span>
+            <motion.svg 
+              className="ml-2 w-5 h-5" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              whileHover={{ x: 5 }}
+              transition={{ duration: 0.2 }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </motion.svg>
+          </motion.a>
+        </motion.div>
       </div>
     </motion.section>
   );

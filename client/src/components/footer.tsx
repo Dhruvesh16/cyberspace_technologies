@@ -1,156 +1,223 @@
-import { Linkedin } from "lucide-react";
 import { motion } from "motion/react";
+import { Linkedin, Twitter, Github, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const footerSections = [
+    {
+      title: "Services",
+      links: [
+        "Data Engineering",
+        "Cloud Solutions", 
+        "AI & Machine Learning",
+        "Cybersecurity",
+        "Digital Transformation"
+      ]
+    },
+    {
+      title: "Company",
+      links: [
+        "About Us",
+        "Our Team",
+        "Careers",
+        "Partners",
+        "Case Studies"
+      ]
+    },
+    {
+      title: "Resources",
+      links: [
+        "Blog",
+        "Whitepapers",
+        "Documentation",
+        "Support",
+        "Contact"
+      ]
+    }
+  ];
+
   return (
     <motion.footer 
-      className="bg-gray-900 text-white py-16"
+      className="relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <motion.div 
-            className="md:col-span-1"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <img
-              src="https://cyberspaceinc.com/wp-content/uploads/2023/03/cst-logo-2-180x108.png"
-              alt="Cyber Space Technologies"
-              className="h-12 w-auto mb-4 filter brightness-0 invert"
-              data-testid="footer-logo"
-            />
-            <p className="text-gray-400 text-sm leading-relaxed" data-testid="footer-description">
-              Empowering organizations with innovative solutions in data engineering, analytics, cloud services, and cyber security.
-            </p>
-            <div className="flex space-x-4 mt-6">
-              <motion.a
-                href="https://www.linkedin.com/company/cyberspace-technologies-llc"
-                className="text-gray-400 hover:text-white transition-colors"
-                data-testid="footer-linkedin"
-                whileHover={{ scale: 1.2, y: -2 }}
-                whileTap={{ scale: 0.9 }}
+      {/* Background with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900" />
+      
+      {/* Floating elements */}
+      <div className="absolute inset-0">
+        <motion.div 
+          className="absolute top-20 left-20 w-32 h-32 rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(188, 116, 255, 0.1) 0%, transparent 70%)",
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-20 right-20 w-24 h-24 rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(34, 211, 238, 0.1) 0%, transparent 70%)",
+          }}
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.6, 0.3, 0.6]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-4 gap-8 mb-12">
+            {/* Company Info */}
+            <motion.div 
+              className="lg:col-span-1"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <motion.div 
+                className="mb-6"
+                whileHover={{ scale: 1.05 }}
               >
-                <Linkedin className="w-5 h-5" />
-              </motion.a>
-            </div>
-          </motion.div>
-
-          {/* Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className="text-lg font-semibold mb-4" data-testid="footer-services-title">
-              Our Services
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-service-data-engineering">
-                  Data Engineering
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-service-analytics">
-                  Analytics
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-service-cloud">
-                  Cloud Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-service-app">
-                  App Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-service-it">
-                  IT Services
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Company */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h3 className="text-lg font-semibold mb-4" data-testid="footer-company-title">
-              Company
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-about">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-team">
-                  Our Team
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-careers">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-clients">
-                  Clients & Partners
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors" data-testid="footer-contact">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <h3 className="text-lg font-semibold mb-4" data-testid="footer-contact-title">
-              Contact
-            </h3>
-            <div className="text-sm text-gray-400 space-y-2">
-              <p data-testid="footer-address-line1">2015 RT 27 South, Suite #234</p>
-              <p data-testid="footer-address-line2">Edison, NJ 08817</p>
-              <p className="text-white font-medium" data-testid="footer-phone">
-                +1 (732) 515-9299
+                <h3 className="text-2xl font-bold">
+                  <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                    CyberSpace
+                  </span>
+                  <span className="text-white"> Technologies</span>
+                </h3>
+              </motion.div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                Transforming businesses with cutting-edge technology solutions. We deliver innovation that drives growth and success.
               </p>
+              
+              {/* Contact Info */}
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-3 text-gray-400 text-sm">
+                  <Mail className="w-4 h-4 text-purple-400" />
+                  support@cyberspaceinc.com
+                </div>
+                <div className="flex items-center gap-3 text-gray-400 text-sm">
+                  <Phone className="w-4 h-4 text-cyan-400" />
+                  +1 732-515-9299
+                </div>
+                <div className="flex items-center gap-3 text-gray-400 text-sm">
+                  <MapPin className="w-4 h-4 text-purple-400" />
+                  Edison, NJ • Hyderabad, India
+                </div>
+                <div className="flex items-center gap-3 text-gray-400 text-sm">
+                  <MapPin className="w-4 h-4 text-cyan-400" />
+                  London, UK • Windsor, Canada
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                {[
+                  { icon: Linkedin, href: "https://www.linkedin.com/company/cyberspace-technologies-llc", color: "hover:text-blue-400" },
+                  { icon: Twitter, href: "#", color: "hover:text-blue-400" },
+                  { icon: Github, href: "#", color: "hover:text-gray-300" }
+                ].map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    className={`w-10 h-10 rounded-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 flex items-center justify-center text-gray-400 ${social.color} transition-colors`}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Footer Sections */}
+            {footerSections.map((section, sectionIndex) => (
+              <motion.div
+                key={section.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 + sectionIndex * 0.1 }}
+              >
+                <h4 className="text-lg font-semibold text-white mb-6">
+                  {section.title}
+                </h4>
+                <ul className="space-y-3">
+                  {section.links.map((link, linkIndex) => (
+                    <motion.li
+                      key={link}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.3 + sectionIndex * 0.1 + linkIndex * 0.05 }}
+                    >
+                      <motion.a
+                        href="#"
+                        className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
+                        whileHover={{ x: 5 }}
+                      >
+                        {link}
+                      </motion.a>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom Section */}
+          <motion.div 
+            className="border-t border-gray-800 pt-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="text-gray-400 text-sm">
+                © 2025 Cyber Space Technologies. All rights reserved.
+              </div>
+              
+              <div className="flex items-center gap-6">
+                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">
+                  Privacy Policy
+                </a>
+                <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">
+                  Terms of Service
+                </a>
+                <motion.button
+                  onClick={scrollToTop}
+                  className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <ArrowUp className="w-5 h-5" />
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         </div>
-
-        <motion.div 
-          className="border-t border-gray-800 mt-12 pt-8 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <p className="text-gray-400 text-sm" data-testid="footer-copyright">
-            © 2025 Cyber Space Technologies. All Rights Reserved.
-          </p>
-        </motion.div>
       </div>
     </motion.footer>
   );
