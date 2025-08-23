@@ -1,187 +1,216 @@
-import { useState, useEffect } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, Globe, Zap, Users, Mail, Info, Briefcase, HandHeart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
+import { Link, useLocation } from "wouter";
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location] = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
+  };
 
-    const navigationItems = [
-    { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
-    { name: "Team", href: "/team" },
-    { name: "Partners", href: "/partners" },
-    { name: "Careers", href: "/careers" },
-    { name: "Contact", href: "/contact" }
+  const handleNavigation = (item: any) => {
+    // Always navigate to separate pages
+    setIsMenuOpen(false);
+  };
+
+  const navigationItems = [
+    { name: "Home", path: "/", id: "home", icon: <Globe className="w-4 h-4" /> },
+    { name: "About", path: "/about", id: "about", icon: <Info className="w-4 h-4" /> },
+    { name: "Services", path: "/services", id: "services", icon: <Zap className="w-4 h-4" /> },
+    { name: "Team", path: "/team", id: "team", icon: <Users className="w-4 h-4" /> },
+    { name: "Partners", path: "/partners", id: "partners", icon: <HandHeart className="w-4 h-4" /> },
+    { name: "Careers", path: "/careers", id: "careers", icon: <Briefcase className="w-4 h-4" /> },
+    { name: "Contact", path: "/contact", id: "contact", icon: <Mail className="w-4 h-4" /> }
   ];
 
   return (
-    <>
-      <motion.nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "luna-card border-purple-400/20 shadow-2xl shadow-purple-500/10"
-            : "bg-transparent border-transparent"
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo */}
-            <a href="/" className="flex items-center space-x-1 group" data-testid="logo-link">
-              <motion.div 
-                className="relative w-16 h-12"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <img 
-                  src="/images/logo.jpeg" 
-                  alt="CyberSpace Technologies"
-                  className="w-full h-full object-contain"
-                />
-              </motion.div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                CyberSpace
-              </span>
-            </a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
-              {navigationItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <a
-                    href={item.href}
-                    className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors group"
-                    data-testid={`nav-${item.name.toLowerCase()}`}
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-cyan-400/20 rounded-lg opacity-0 group-hover:opacity-100"
-                      layoutId="navHover"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  </a>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-              >
-                <a
-                  href="/contact"
-                  className="luna-button ml-4 px-6 py-2 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300 inline-block text-center"
-                  data-testid="cta-button"
-                >
-                  Get Started
-                </a>
-              </motion.div>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <motion.button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="luna-card p-2 text-gray-300 hover:text-white"
-                whileTap={{ scale: 0.95 }}
-                data-testid="mobile-menu-button"
-              >
-                <AnimatePresence mode="wait">
-                  {isMobileMenuOpen ? (
-                    <motion.div
-                      key="close"
-                      initial={{ rotate: -90 }}
-                      animate={{ rotate: 0 }}
-                      exit={{ rotate: 90 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <X className="w-6 h-6" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="menu"
-                      initial={{ rotate: 90 }}
-                      animate={{ rotate: 0 }}
-                      exit={{ rotate: -90 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Menu className="w-6 h-6" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-            </div>
-          </div>
-        </div>
-      </motion.nav>
-
-      {/* Mobile Navigation Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-            <motion.div
-              className="absolute top-20 left-4 right-4 luna-card p-6 max-w-sm mx-auto"
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+    <motion.nav 
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-lg shadow-gray-900/5"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <Link href="/">
+            <motion.div 
+              className="flex items-center space-x-3 cursor-pointer group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <div className="space-y-4">
-                {navigationItems.map((item) => (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md transition-colors"
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.95 }}
-                    data-testid={`mobile-nav-${item.name.toLowerCase()}`}
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
+              <div className="relative">
+                {/* Logo Image */}
+                <motion.img
+                  src="/images/logo.png"
+                  alt="CyberSpace Technologies"
+                  className="w-12 h-12 rounded-xl shadow-lg object-contain bg-white"
+                  whileHover={{ rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                />
+                
+                {/* Pulsing ring effect */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
-                  className="pt-4 border-t border-purple-400/20"
-                >
-                  <a
-                    href="/contact"
-                    className="luna-button w-full px-6 py-2 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300 inline-block text-center"
-                    data-testid="mobile-cta-button"
-                  >
-                    Get Started
-                  </a>
-                </motion.div>
+                  className="absolute inset-0 rounded-xl border-2 border-cyber-blue/30"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 0, 0.5]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeOut"
+                  }}
+                />
+              </div>
+              
+              <div className="hidden sm:block">
+                <h1 className="text-xl font-bold text-gray-800 group-hover:text-cyber-blue transition-colors duration-300">
+                  CyberSpace
+                </h1>
+                <p className="text-sm text-gray-500 font-medium">Technologies</p>
               </div>
             </motion.div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1">
+            {navigationItems.map((item, index) => {
+              const isActive = location === item.path;
+              
+              // Always use Link for navigation to separate pages
+              return (
+                <Link key={item.path} href={item.path}>
+                  <motion.div
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-medium group transition-all duration-300 cursor-pointer ${
+                      isActive 
+                        ? "text-cyber-blue bg-cyber-blue/10" 
+                        : "text-gray-700 hover:text-cyber-blue hover:bg-cyber-blue/5"
+                    }`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className={`transition-colors duration-300 ${
+                      isActive ? "text-cyber-purple" : "group-hover:text-cyber-purple"
+                    }`}>
+                      {item.icon}
+                    </span>
+                    <span>{item.name}</span>
+                  </motion.div>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Enhanced CTA Buttons */}
+          <div className="hidden lg:flex items-center space-x-3">
+            <Link href="/contact">
+              <Button
+                className="px-6 py-2 bg-gradient-to-r from-cyber-blue to-cyber-purple hover:from-cyber-purple hover:to-cyber-blue text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-medium"
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                Get Started
+              </Button>
+            </Link>
+          </div>
+
+          {/* Enhanced Mobile Menu Button */}
+          <motion.button
+            onClick={toggleMenu}
+            className="lg:hidden p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <motion.div
+              animate={{ rotate: isMenuOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6 text-gray-700" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-700" />
+              )}
+            </motion.div>
+          </motion.button>
+        </div>
+      </div>
+
+      {/* Enhanced Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-gray-200/50 shadow-2xl"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="max-w-7xl mx-auto px-4 py-6">
+              <div className="grid grid-cols-2 gap-3">
+                {navigationItems.map((item, index) => {
+                  const isActive = location === item.path;
+                  return (
+                    <Link key={item.path} href={item.path}>
+                      <motion.div
+                        className={`flex items-center space-x-3 p-4 rounded-xl font-medium group text-left w-full transition-all duration-300 cursor-pointer ${
+                          isActive 
+                            ? "text-cyber-blue bg-cyber-blue/10" 
+                            : "text-gray-700 hover:text-cyber-blue hover:bg-cyber-blue/5"
+                        }`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <span className={`transition-colors duration-300 ${
+                          isActive ? "text-cyber-purple" : "group-hover:text-cyber-purple"
+                        }`}>
+                          {item.icon}
+                        </span>
+                        <span>{item.name}</span>
+                      </motion.div>
+                    </Link>
+                  );
+                })}
+              </div>
+              
+              <motion.div 
+                className="mt-6 pt-6 border-t border-gray-200/50"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+              >
+                <Link href="/contact">
+                  <Button
+                    onClick={() => setIsMenuOpen(false)}
+                    className="w-full px-6 py-3 bg-gradient-to-r from-cyber-blue to-cyber-purple hover:from-cyber-purple hover:to-cyber-blue text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Get Started
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </motion.nav>
   );
 }

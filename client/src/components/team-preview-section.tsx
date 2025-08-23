@@ -50,10 +50,10 @@ export default function TeamPreviewSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Meet Our <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Team</span>
+          <motion.h2 className="text-4xl md:text-5xl team-title mb-4">
+            Meet Our <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-black">Team</span>
           </motion.h2>
-          <motion.p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.p className="text-xl team-desc max-w-3xl mx-auto">
             Talented professionals united by a passion for innovation and excellence
           </motion.p>
         </motion.div>
@@ -73,7 +73,7 @@ export default function TeamPreviewSection() {
               className="group"
             >
               <motion.div 
-                className="luna-card p-6 text-center group-hover:shadow-2xl group-hover:shadow-purple-500/30 transition-all duration-500"
+                className="bg-white/80 backdrop-blur-sm border border-purple-200/50 rounded-2xl p-6 text-center shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/20 transition-all duration-500"
                 whileHover={{ y: -15, scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -95,15 +95,15 @@ export default function TeamPreviewSection() {
                 </motion.div>
 
                 <motion.div className="mb-4">
-                  <motion.h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors duration-300">
+                  <motion.h3 className="text-xl team-card-name mb-2 group-hover:text-purple-600 transition-colors duration-300">
                     {member.name}
                   </motion.h3>
-                  <motion.p className={`text-sm font-medium bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent mb-3`}>
+                  <motion.p className={`text-sm team-card-role mb-3`}>
                     {member.role}
                   </motion.p>
                 </motion.div>
 
-                <motion.p className="text-gray-400 text-sm mb-6 group-hover:text-gray-300 transition-colors duration-300">
+                <motion.p className="team-card-bio text-sm mb-6 group-hover:text-gray-700 transition-colors duration-300">
                   {member.bio}
                 </motion.p>
               </motion.div>

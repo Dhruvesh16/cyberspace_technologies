@@ -6,43 +6,43 @@ import { motion } from "motion/react";
 export default function ServicesSection() {
   const services = [
     {
-      icon: <Database className="w-8 h-8 text-purple-400" />,
+      icon: <Database className="w-8 h-8 text-cyber-green" />,
       title: "Data Engineering",
       description: "Data Warehouse Modernization, Real-time data onboarding, Data Governance & Observability, and Unique MDM implementation expertise.",
-      gradient: "from-purple-500/20 to-cyan-500/20",
-      glow: "shadow-purple-500/20",
+      gradient: "from-emerald-500/20 to-teal-500/20",
+      glow: "shadow-emerald-500/30",
       href: "/services"
     },
     {
-      icon: <BarChart3 className="w-8 h-8 text-cyan-400" />,
+      icon: <BarChart3 className="w-8 h-8 text-cyber-blue" />,
       title: "Analytics", 
       description: "Modern Data Analytics, AI/ML Analytics Engineering, and Process Mining Analytics with real-time delivery and AI automation.",
-      gradient: "from-cyan-500/20 to-purple-500/20",
-      glow: "shadow-cyan-500/20",
+      gradient: "from-blue-500/20 to-cyan-500/20",
+      glow: "shadow-blue-500/30",
       href: "/services"
     },
     {
-      icon: <Cloud className="w-8 h-8 text-purple-400" />,
+      icon: <Cloud className="w-8 h-8 text-cyber-purple" />,
       title: "Cloud Services",
       description: "AWS/Azure/GCP Cloud Infrastructure, Microservices, Enterprise Architecture consulting, and DBA as a service solutions.",
-      gradient: "from-purple-500/20 to-cyan-500/20",
-      glow: "shadow-purple-500/20",
+      gradient: "from-purple-500/20 to-violet-500/20",
+      glow: "shadow-purple-500/30",
       href: "/services"
     },
     {
-      icon: <Smartphone className="w-8 h-8 text-cyan-400" />,
+      icon: <Smartphone className="w-8 h-8 text-cyber-pink" />,
       title: "App Services",
       description: "Reactive and Progressive Web Apps, Mobile App Development, and Microservices with Service Mesh architecture.",
-      gradient: "from-cyan-500/20 to-purple-500/20",
-      glow: "shadow-cyan-500/20",
+      gradient: "from-pink-500/20 to-rose-500/20",
+      glow: "shadow-pink-500/30",
       href: "/services"
     },
     {
-      icon: <Shield className="w-8 h-8 text-purple-400" />,
+      icon: <Shield className="w-8 h-8 text-cyber-orange" />,
       title: "IT Services",
       description: "IT Management, Data Security, Business Reform, Infrastructure Planning, Firewall Advance, and Desktop Computing solutions.",
-      gradient: "from-purple-500/20 to-cyan-500/20",
-      glow: "shadow-purple-500/20",
+      gradient: "from-orange-500/20 to-amber-500/20",
+      glow: "shadow-orange-500/30",
       href: "/services"
     }
   ];
@@ -50,7 +50,7 @@ export default function ServicesSection() {
   return (
     <motion.section 
       id="services" 
-      className="py-20 relative overflow-hidden"
+      className="services-section py-20 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -65,13 +65,13 @@ export default function ServicesSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-white mb-4" 
+            className="text-4xl md:text-5xl font-bold services-title mb-4" 
             data-testid="services-title"
           >
-            Services We <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Deliver</span>
+            Services We <span className="bg-gradient-to-r from-cyber-blue to-cyber-purple bg-clip-text text-transparent font-black">Deliver</span>
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-xl services-desc max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -92,7 +92,7 @@ export default function ServicesSection() {
               whileHover={{ y: -5 }}
               className="group"
             >
-              <Card className={`luna-card h-full transition-all duration-300 hover:${service.glow} hover:shadow-2xl border-0`}>
+              <Card className={`service-card bg-white/90 backdrop-blur-sm border border-cyber-blue/30 h-full transition-all duration-300 hover:${service.glow} hover:shadow-2xl hover:border-cyber-purple/50`}>
                 <CardContent className="p-8 text-center h-full flex flex-col">
                   <motion.div 
                     className={`w-16 h-16 rounded-full bg-gradient-to-r ${service.gradient} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform`}
@@ -101,10 +101,10 @@ export default function ServicesSection() {
                   >
                     {service.icon}
                   </motion.div>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
+                  <h3 className="text-xl font-bold services-card-title mb-4 group-hover:text-cyber-purple transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed flex-grow mb-6">
+                  <p className="services-card-text leading-relaxed flex-grow mb-6">
                     {service.description}
                   </p>
                   <motion.div
@@ -113,7 +113,7 @@ export default function ServicesSection() {
                   >
                     <Button 
                       variant="ghost" 
-                      className="text-purple-400 hover:text-cyan-400 hover:bg-purple-400/10 group-hover:bg-purple-400/20 transition-all p-0"
+                      className="services-accent font-medium text-cyber-blue hover:text-cyber-purple hover:bg-cyber-blue/10 group-hover:bg-cyber-purple/10 transition-all p-0"
                       onClick={() => window.location.href = service.href}
                     >
                       Learn More 
@@ -135,7 +135,7 @@ export default function ServicesSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <Button 
-            className="luna-button text-lg px-8 py-4 group"
+            className="services-button text-lg px-8 py-4 group rounded-lg font-semibold transition-all duration-300 hover:scale-105"
             onClick={() => window.location.href = "/contact"}
           >
             <Zap className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />

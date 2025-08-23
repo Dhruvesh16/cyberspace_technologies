@@ -200,7 +200,7 @@ export default function Careers() {
       
       {/* Hero Section */}
       <motion.section 
-        className="pt-32 pb-20 relative overflow-hidden"
+        className="pt-32 pb-16 relative overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -212,27 +212,27 @@ export default function Careers() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 Careers
               </span>
             </h1>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto mb-12">
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
               Join a dynamic team of innovators and help shape the future of technology
             </p>
             
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
               {[
-                { icon: <Users className="w-8 h-8" />, number: "22+", label: "Years Experience" },
-                { icon: <Globe className="w-8 h-8" />, number: "4", label: "Global Offices" },
-                { icon: <Target className="w-8 h-8" />, number: "500+", label: "Clients Served" },
-                { icon: <Award className="w-8 h-8" />, number: "99%", label: "Success Rate" }
+                { icon: <Users className="w-6 h-6" />, number: "22+", label: "Years Experience" },
+                { icon: <Globe className="w-6 h-6" />, number: "4", label: "Global Offices" },
+                { icon: <Target className="w-6 h-6" />, number: "500+", label: "Clients Served" },
+                { icon: <Award className="w-6 h-6" />, number: "99%", label: "Success Rate" }
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -244,7 +244,7 @@ export default function Careers() {
                   <div className="text-purple-400 mb-2 flex justify-center">
                     {stat.icon}
                   </div>
-                  <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
+                  <div className="text-2xl font-bold text-white mb-1">{stat.number}</div>
                   <div className="text-gray-400 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
@@ -255,7 +255,7 @@ export default function Careers() {
 
       {/* Why Work With Us */}
       <motion.section 
-        className="py-20 relative overflow-hidden"
+        className="py-16 relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -263,16 +263,16 @@ export default function Careers() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl font-bold text-white mb-4">
               Why Work With <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">CyberSpace?</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               We offer a collaborative environment where innovation thrives and careers flourish
             </p>
           </motion.div>
@@ -288,20 +288,20 @@ export default function Careers() {
                 className="group"
               >
                 <motion.div 
-                  className="luna-card p-8 text-center h-full"
+                  className="luna-card p-6 text-center h-full"
                   whileHover={{ y: -5 }}
                 >
                   <motion.div 
-                    className="w-16 h-16 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform"
+                    className="w-12 h-12 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <benefit.icon className="w-8 h-8 text-purple-400" />
+                    <benefit.icon className="w-6 h-6 text-purple-400" />
                   </motion.div>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
+                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -313,7 +313,7 @@ export default function Careers() {
 
       {/* Current Openings */}
       <motion.section 
-        className="py-20 relative overflow-hidden bg-gradient-to-r from-purple-900/10 to-cyan-900/10"
+        className="py-16 relative overflow-hidden bg-gradient-to-r from-purple-900/10 to-cyan-900/10"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -321,18 +321,18 @@ export default function Careers() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl font-bold text-white mb-4">
               <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 Current Openings
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Explore exciting opportunities to grow your career with us
             </p>
           </motion.div>
@@ -348,20 +348,20 @@ export default function Careers() {
                 className="group"
               >
                 <motion.div 
-                  className="luna-card p-8"
+                  className="luna-card p-6"
                   whileHover={{ y: -3 }}
                 >
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                     <div className="mb-4 lg:mb-0">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                        <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
                           {job.title}
                         </h3>
                         <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full text-sm text-cyan-400 font-medium">
                           {job.department}
                         </span>
                       </div>
-                      <div className="flex flex-wrap gap-4 text-gray-400">
+                      <div className="flex flex-wrap gap-4 text-gray-400 text-sm">
                         <div className="flex items-center">
                           <MapPin className="w-4 h-4 mr-1" />
                           {job.location}
@@ -382,7 +382,7 @@ export default function Careers() {
                     </div>
                     <motion.a
                       href="/contact"
-                      className="luna-button inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300 self-start"
+                      className="luna-button inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300 self-start text-sm"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -391,19 +391,24 @@ export default function Careers() {
                     </motion.a>
                   </div>
                   
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-gray-300 mb-4 leading-relaxed text-sm">
                     {job.description}
                   </p>
                   
                   <div>
-                    <h4 className="text-white font-semibold mb-3">Requirements:</h4>
-                    <ul className="space-y-2">
-                      {job.requirements.map((req, idx) => (
-                        <li key={idx} className="flex items-start text-gray-300">
-                          <CheckCircle className="w-4 h-4 text-green-400 mr-2 mt-1 flex-shrink-0" />
+                    <h4 className="text-white font-semibold mb-2 text-sm">Requirements:</h4>
+                    <ul className="space-y-1">
+                      {job.requirements.slice(0, 3).map((req, idx) => (
+                        <li key={idx} className="flex items-start text-gray-300 text-sm">
+                          <CheckCircle className="w-4 h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                           {req}
                         </li>
                       ))}
+                      {job.requirements.length > 3 && (
+                        <li className="text-gray-400 text-sm">
+                          + {job.requirements.length - 3} more requirements
+                        </li>
+                      )}
                     </ul>
                   </div>
                 </motion.div>
@@ -415,7 +420,7 @@ export default function Careers() {
 
       {/* Our Locations */}
       <motion.section 
-        className="py-20 relative overflow-hidden"
+        className="py-16 relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -423,16 +428,16 @@ export default function Careers() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl font-bold text-white mb-4">
               Our <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Global Locations</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Work from any of our offices around the world or remotely
             </p>
           </motion.div>
@@ -447,23 +452,23 @@ export default function Careers() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
                 <motion.div 
-                  className="luna-card p-6 h-full"
+                  className="luna-card p-4 h-full"
                   whileHover={{ y: -5 }}
                 >
-                  <div className="flex items-center mb-4">
-                    <Globe className="w-6 h-6 text-purple-400 mr-3" />
-                    <h3 className="text-xl font-bold text-white">{location.country}</h3>
+                  <div className="flex items-center mb-3">
+                    <Globe className="w-5 h-5 text-purple-400 mr-2" />
+                    <h3 className="text-lg font-bold text-white">{location.country}</h3>
                   </div>
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {location.offices.map((office, idx) => (
-                      <div key={idx} className="border-l-2 border-purple-500/30 pl-4">
-                        <div className="flex items-center mb-2">
+                      <div key={idx} className="border-l-2 border-purple-500/30 pl-3">
+                        <div className="flex items-center mb-1">
                           <Building className="w-4 h-4 text-cyan-400 mr-2" />
-                          <h4 className="font-semibold text-white">{office.city}</h4>
+                          <h4 className="font-semibold text-white text-sm">{office.city}</h4>
                         </div>
-                        <p className="text-gray-400 text-sm mb-2">{office.address}</p>
-                        <div className="flex items-center text-gray-400 text-sm">
-                          <Phone className="w-4 h-4 mr-2" />
+                        <p className="text-gray-400 text-xs mb-1">{office.address}</p>
+                        <div className="flex items-center text-gray-400 text-xs">
+                          <Phone className="w-3 h-3 mr-1" />
                           {office.phone}
                         </div>
                       </div>
@@ -478,7 +483,7 @@ export default function Careers() {
 
       {/* CTA Section */}
       <motion.section 
-        className="py-20 relative overflow-hidden bg-gradient-to-r from-purple-900/20 to-cyan-900/20"
+        className="py-16 relative overflow-hidden bg-gradient-to-r from-purple-900/20 to-cyan-900/20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -492,30 +497,30 @@ export default function Careers() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Join Our Team?
             </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
               Don't see a position that fits? Send us your resume and we'll keep you in mind for future opportunities.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <motion.a
                 href="/contact"
-                className="luna-button inline-flex items-center px-10 py-5 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-bold text-lg rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300"
+                className="luna-button inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-bold rounded-lg hover:from-purple-600 hover:to-cyan-600 transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Send Resume
-                <Mail className="ml-2 w-5 h-5" />
+                <Mail className="ml-2 w-4 h-4" />
               </motion.a>
               <motion.a
                 href="mailto:careers@cyberspaceinc.com"
-                className="luna-button inline-flex items-center px-10 py-5 border-2 border-purple-500 text-purple-400 font-bold text-lg rounded-lg hover:bg-purple-500 hover:text-white transition-all duration-300"
+                className="luna-button inline-flex items-center px-6 py-3 border-2 border-purple-500 text-purple-400 font-bold rounded-lg hover:bg-purple-500 hover:text-white transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Email Us
-                <ExternalLink className="ml-2 w-5 h-5" />
+                <ExternalLink className="ml-2 w-4 h-4" />
               </motion.a>
             </div>
           </motion.div>

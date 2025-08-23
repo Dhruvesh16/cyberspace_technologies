@@ -25,10 +25,10 @@ export default function StatisticsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Impact</span>
+          <motion.h2 className="text-4xl md:text-5xl stats-title mb-4">
+            Our <span className="bg-gradient-to-r from-cyber-purple to-cyber-blue bg-clip-text text-transparent font-black">Impact</span>
           </motion.h2>
-          <motion.p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.p className="text-xl stats-desc max-w-3xl mx-auto font-medium">
             Numbers that showcase our commitment to excellence and global reach
           </motion.p>
         </motion.div>
@@ -48,17 +48,17 @@ export default function StatisticsSection() {
               className="group"
             >
               <motion.div 
-                className="luna-card p-8 text-center group-hover:shadow-2xl group-hover:shadow-purple-500/30 transition-all duration-500"
+                className="stats-card bg-white/90 backdrop-blur-sm border-2 border-cyber-blue/30 rounded-2xl p-8 text-center shadow-lg group-hover:shadow-xl group-hover:shadow-cyber-purple/30 transition-all duration-500"
                 whileHover={{ y: -10, scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <motion.h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent mb-2">
+                <motion.h3 className="text-4xl md:text-5xl font-bold text-cyber-blue mb-2">
                   {stat.number}
                 </motion.h3>
-                <motion.p className="text-xl font-semibold text-white group-hover:text-purple-300 transition-colors duration-300 mb-2">
+                <motion.p className="text-xl stats-label font-semibold group-hover:text-cyber-purple transition-colors duration-300 mb-2">
                   {stat.label}
                 </motion.p>
-                <motion.p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                <motion.p className="stats-description font-medium group-hover:text-gray-800 transition-colors duration-300">
                   {stat.description}
                 </motion.p>
               </motion.div>

@@ -4,98 +4,115 @@
 @tailwind utilities;
 
 :root {
-  /* Dark futuristic theme similar to lunacal.ai */
-  --background: hsl(222 84% 4.9%);
-  --foreground: hsl(210 40% 98%);
-  --card: hsl(222 84% 4.9%);
-  --card-foreground: hsl(210 40% 98%);
-  --popover: hsl(222 84% 4.9%);
-  --popover-foreground: hsl(210 40% 98%);
-  --primary: hsl(263 95% 70%);
+  /* Bold, high-contrast color scheme */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(230 25% 15%);
+  --card: hsl(210 50% 98%);
+  --card-foreground: hsl(230 25% 15%);
+  --popover: hsl(210 50% 98%);
+  --popover-foreground: hsl(230 25% 15%);
+  --primary: hsl(220 70% 50%);
   --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(217 32.6% 17.5%);
-  --secondary-foreground: hsl(210 40% 98%);
-  --muted: hsl(217 32.6% 17.5%);
-  --muted-foreground: hsl(215 20.2% 65.1%);
-  --accent: hsl(217 32.6% 17.5%);
-  --accent-foreground: hsl(210 40% 98%);
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(210 40% 98%);
-  --border: hsl(217 32.6% 17.5%);
-  --input: hsl(217 32.6% 17.5%);
-  --ring: hsl(263 95% 70%);
-  --chart-1: hsl(263 95% 70%);
-  --chart-2: hsl(190 95% 70%);
-  --chart-3: hsl(47 95% 70%);
-  --chart-4: hsl(123 95% 70%);
-  --chart-5: hsl(320 95% 70%);
-  --sidebar: hsl(222 84% 4.9%);
-  --sidebar-foreground: hsl(210 40% 98%);
-  --sidebar-primary: hsl(263 95% 70%);
+  --secondary: hsl(215 30% 95%);
+  --secondary-foreground: hsl(230 25% 15%);
+  --muted: hsl(215 30% 95%);
+  --muted-foreground: hsl(215 20% 35%);
+  --accent: hsl(280 60% 52%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 95% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(214 25% 85%);
+  --input: hsl(214 25% 85%);
+  --ring: hsl(220 70% 50%);
+  
+  /* Vibrant chart colors */
+  --chart-1: hsl(220 70% 50%);
+  --chart-2: hsl(325 80% 55%);
+  --chart-3: hsl(35 95% 55%);
+  --chart-4: hsl(160 75% 45%);
+  --chart-5: hsl(280 60% 52%);
+  
+  /* Sidebar colors */
+  --sidebar: hsl(215 30% 95%);
+  --sidebar-foreground: hsl(230 25% 15%);
+  --sidebar-primary: hsl(220 70% 50%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(217 32.6% 17.5%);
-  --sidebar-accent-foreground: hsl(210 40% 98%);
-  --sidebar-border: hsl(217 32.6% 17.5%);
-  --sidebar-ring: hsl(263 95% 70%);
+  --sidebar-accent: hsl(280 60% 52%);
+  --sidebar-accent-foreground: hsl(0 0% 100%);
+  --sidebar-border: hsl(214 25% 85%);
+  --sidebar-ring: hsl(220 70% 50%);
+  
+  /* Typography */
   --font-sans: 'Inter', 'Open Sans', sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --radius: 1rem;
+  --radius: 0.75rem;
   
-  /* Futuristic color scheme */
-  --gradient-primary: linear-gradient(135deg, hsl(263 95% 70%) 0%, hsl(190 95% 70%) 50%, hsl(263 95% 70%) 100%);
-  --gradient-secondary: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217 32.6% 17.5%) 50%, hsl(222 84% 4.9%) 100%);
-  --gradient-hero: radial-gradient(ellipse at center, hsl(263 95% 20%) 0%, hsl(222 84% 4.9%) 70%);
-  --gradient-glass: linear-gradient(135deg, rgba(188, 116, 255, 0.1) 0%, rgba(34, 211, 238, 0.05) 100%);
-  --glow-primary: 0 0 30px hsla(263, 95%, 70%, 0.3);
-  --glow-secondary: 0 0 20px hsla(190, 95%, 70%, 0.3);
-  --glow-accent: 0 0 25px hsla(47, 95%, 70%, 0.2);
+  /* Vibrant gradient schemes */
+  --gradient-primary: linear-gradient(135deg, hsl(220 70% 50%) 0%, hsl(280 60% 52%) 100%);
+  --gradient-secondary: linear-gradient(135deg, hsl(35 95% 55%) 0%, hsl(325 80% 55%) 100%);
+  --gradient-hero: radial-gradient(ellipse at center, hsl(215 30% 95%) 0%, hsl(0 0% 100%) 70%);
+  --gradient-glass: linear-gradient(135deg, rgba(66, 99, 235, 0.07) 0%, rgba(173, 58, 255, 0.05) 100%);
   
-  /* Lunacal-inspired colors */
-  --lunacal-purple: hsl(263 95% 70%);
-  --lunacal-blue: hsl(190 95% 70%);
-  --lunacal-dark: hsl(222 84% 4.9%);
-  --lunacal-darker: hsl(220 84% 3%);
-  --lunacal-card: hsl(217 32.6% 12%);
+  /* Bold glow effects */
+  --glow-primary: 0 0 30px hsla(220, 70%, 50%, 0.2);
+  --glow-secondary: 0 0 20px hsla(280, 60%, 52%, 0.3);
+  --glow-accent: 0 0 25px hsla(35, 95%, 55%, 0.2);
+  
+  /* CyberSpace brand colors - BOLD VERSION */
+  --cyber-blue: hsl(220 70% 50%);
+  --cyber-purple: hsl(280 60% 52%);
+  --cyber-orange: hsl(35 95% 55%);
+  --cyber-pink: hsl(325 80% 55%);
+  --cyber-green: hsl(160 75% 45%);
+  --cyber-teal: hsl(175 70% 45%);
+  --cyber-dark: hsl(230 25% 15%);
 }
 
 .dark {
-  --background: hsl(222 84% 4.9%);
+  --background: hsl(230 25% 8%);
   --foreground: hsl(210 40% 98%);
-  --card: hsl(222 84% 4.9%);
+  --card: hsl(230 25% 12%);
   --card-foreground: hsl(210 40% 98%);
-  --popover: hsl(222 84% 4.9%);
+  --popover: hsl(230 25% 12%);
   --popover-foreground: hsl(210 40% 98%);
-  --primary: hsl(203.7736 87.6033% 52.5490%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(217 32.6% 17.5%);
+  --primary: hsl(220 70% 60%);
+  --primary-foreground: hsl(210 40% 98%);
+  --secondary: hsl(230 25% 15%);
   --secondary-foreground: hsl(210 40% 98%);
-  --muted: hsl(217 32.6% 17.5%);
-  --muted-foreground: hsl(215 20.2% 65.1%);
-  --accent: hsl(217 32.6% 17.5%);
+  --muted: hsl(230 25% 15%);
+  --muted-foreground: hsl(210 40% 80%);
+  --accent: hsl(280 60% 60%);
   --accent-foreground: hsl(210 40% 98%);
-  --destructive: hsl(0 62.8% 30.6%);
+  --destructive: hsl(0 95% 60%);
   --destructive-foreground: hsl(210 40% 98%);
-  --border: hsl(217 32.6% 17.5%);
-  --input: hsl(217 32.6% 17.5%);
-  --ring: hsl(212.7 26.8% 83.9%);
-  --chart-1: hsl(220 70% 50%);
-  --chart-2: hsl(160 60% 45%);
-  --chart-3: hsl(30 80% 55%);
-  --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%);
-  --sidebar: hsl(222 84% 4.9%);
+  --border: hsl(230 25% 20%);
+  --input: hsl(230 25% 20%);
+  --ring: hsl(220 70% 60%);
+  
+  /* Dark mode chart colors - vibrant against dark */
+  --chart-1: hsl(220 70% 60%);
+  --chart-2: hsl(325 80% 65%);
+  --chart-3: hsl(35 95% 65%);
+  --chart-4: hsl(160 75% 55%);
+  --chart-5: hsl(280 60% 65%);
+  
+  /* Dark mode sidebar */
+  --sidebar: hsl(230 25% 12%);
   --sidebar-foreground: hsl(210 40% 98%);
-  --sidebar-primary: hsl(224.3 76.3% 94.1%);
-  --sidebar-primary-foreground: hsl(220.9 39.3% 11%);
-  --sidebar-accent: hsl(220 14.3% 95.9%);
-  --sidebar-accent-foreground: hsl(220.9 39.3% 11%);
-  --sidebar-border: hsl(217 32.6% 17.5%);
-  --sidebar-ring: hsl(212.7 26.8% 83.9%);
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  --glow-blue: 0 0 30px rgba(59, 130, 246, 0.5);
-  --glow-purple: 0 0 30px rgba(147, 51, 234, 0.5);
-  --glow-cyan: 0 0 30px rgba(6, 182, 212, 0.5);
+  --sidebar-primary: hsl(220 70% 60%);
+  --sidebar-primary-foreground: hsl(210 40% 98%);
+  --sidebar-accent: hsl(280 60% 60%);
+  --sidebar-accent-foreground: hsl(210 40% 98%);
+  --sidebar-border: hsl(230 25% 20%);
+  --sidebar-ring: hsl(220 70% 60%);
+  
+  /* Dark mode glass effect */
+  --gradient-glass: linear-gradient(135deg, rgba(66, 99, 235, 0.15) 0%, rgba(173, 58, 255, 0.10) 100%);
+  
+  /* Dark mode glows - more vibrant */
+  --glow-primary: 0 0 30px rgba(66, 99, 235, 0.4);
+  --glow-secondary: 0 0 30px rgba(173, 58, 255, 0.4);
 }
 
 @layer base {
@@ -107,45 +124,91 @@
     @apply font-sans antialiased text-foreground;
     font-family: var(--font-sans);
     overflow-x: hidden;
-    background: var(--lunacal-darker);
+    background: var(--background);
     background-image: 
-      /* Futuristic grid pattern similar to lunacal.ai */
-      linear-gradient(90deg, rgba(188, 116, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(rgba(188, 116, 255, 0.05) 1px, transparent 1px),
-      /* Glowing network nodes */
-      radial-gradient(circle at 15% 15%, rgba(188, 116, 255, 0.1) 2px, transparent 2px),
-      radial-gradient(circle at 85% 15%, rgba(34, 211, 238, 0.08) 1px, transparent 1px),
-      radial-gradient(circle at 15% 85%, rgba(188, 116, 255, 0.06) 1px, transparent 1px),
-      radial-gradient(circle at 85% 85%, rgba(34, 211, 238, 0.1) 2px, transparent 2px),
-      radial-gradient(circle at 50% 50%, rgba(188, 116, 255, 0.03) 1px, transparent 1px),
-      /* Animated data streams */
-      linear-gradient(45deg, transparent 40%, rgba(188, 116, 255, 0.03) 41%, rgba(188, 116, 255, 0.03) 42%, transparent 43%),
-      linear-gradient(-45deg, transparent 40%, rgba(34, 211, 238, 0.03) 41%, rgba(34, 211, 238, 0.03) 42%, transparent 43%),
-      /* Ambient glow overlay */
-      radial-gradient(ellipse at center, rgba(188, 116, 255, 0.02) 0%, transparent 70%);
+      /* Simplified clean grid pattern */
+      linear-gradient(90deg, rgba(66, 99, 235, 0.03) 1px, transparent 1px),
+      linear-gradient(rgba(66, 99, 235, 0.03) 1px, transparent 1px),
+      /* Subtle accent dots */
+      radial-gradient(circle at 15% 15%, rgba(66, 99, 235, 0.05) 2px, transparent 2px),
+      radial-gradient(circle at 85% 15%, rgba(53, 184, 91, 0.05) 1px, transparent 1px),
+      radial-gradient(circle at 15% 85%, rgba(173, 58, 255, 0.05) 1px, transparent 1px),
+      radial-gradient(circle at 85% 85%, rgba(255, 158, 54, 0.05) 2px, transparent 2px),
+      /* Ambient light overlay */
+      radial-gradient(ellipse at center, rgba(66, 99, 235, 0.01) 0%, transparent 70%);
     background-size: 
-      60px 60px,
-      60px 60px,
-      300px 300px,
+      100px 100px,
+      100px 100px,
       400px 400px,
-      350px 350px,
-      280px 280px,
-      200px 200px,
-      300px 300px,
-      300px 300px,
+      500px 500px,
+      450px 450px,
+      380px 380px,
       100% 100%;
     background-position: 
       0 0,
       0 0,
       0 0,
-      150px 75px,
-      300px 150px,
-      75px 300px,
-      450px 225px,
-      0 0,
-      150px 150px,
+      175px 88px,
+      350px 175px,
+      88px 350px,
       center;
-    animation: lunaFlow 60s linear infinite;
+    animation: modernFlow 120s linear infinite;
+  }
+
+  /* Add the missing modernFlow animation */
+  @keyframes modernFlow {
+    0%, 100% {
+      background-position: 
+        0 0,
+        0 0,
+        0 0,
+        175px 88px,
+        350px 175px,
+        88px 350px,
+        525px 263px,
+        0 0,
+        175px 175px,
+        center;
+    }
+    25% {
+      background-position: 
+        20px 20px,
+        -20px 20px,
+        50px 50px,
+        225px 138px,
+        400px 225px,
+        138px 400px,
+        575px 313px,
+        50px 50px,
+        225px 225px,
+        center;
+    }
+    50% {
+      background-position: 
+        40px 0,
+        0 40px,
+        100px 100px,
+        275px 188px,
+        450px 275px,
+        188px 450px,
+        625px 363px,
+        100px 100px,
+        275px 275px,
+        center;
+    }
+    75% {
+      background-position: 
+        20px -20px,
+        -20px -20px,
+        50px 150px,
+        225px 238px,
+        400px 325px,
+        238px 500px,
+        575px 413px,
+        50px 150px,
+        225px 325px,
+        center;
+    }
   }
 
   /* Smooth focus transitions */
@@ -167,7 +230,118 @@
 }
 
 @layer components {
-  .gradient-bg {
+  /* Bold color scheme utilities */
+  .text-cyber-blue {
+    color: var(--cyber-blue) !important;
+  }
+  
+  .text-cyber-purple {
+    color: var(--cyber-purple) !important;
+  }
+  
+  .text-cyber-orange {
+    color: var(--cyber-orange) !important;
+  }
+  
+  .text-cyber-pink {
+    color: var(--cyber-pink) !important;
+  }
+  
+  .text-cyber-green {
+    color: var(--cyber-green) !important;
+  }
+  
+  .bg-cyber-blue {
+    background-color: var(--cyber-blue) !important;
+  }
+  
+  .bg-cyber-purple {
+    background-color: var(--cyber-purple) !important;
+  }
+  
+  .bg-cyber-orange {
+    background-color: var(--cyber-orange) !important;
+  }
+  
+  .bg-cyber-pink {
+    background-color: var(--cyber-pink) !important;
+  }
+  
+  .bg-cyber-green {
+    background-color: var(--cyber-green) !important;
+  }
+  
+  .gradient-text-primary {
+    background: var(--gradient-primary) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  .gradient-text-secondary {
+    background: var(--gradient-secondary) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+  }
+  
+  .glow-primary {
+    box-shadow: var(--glow-primary) !important;
+  }
+  
+  .glow-secondary {
+    box-shadow: var(--glow-secondary) !important;
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent) !important;
+  }
+  
+  /* High visibility card styles */
+  .service-card, .team-card, .stats-card, .contact-card, .contact-info-card {
+    background: white !important;
+    border: 2px solid rgba(66, 99, 235, 0.25) !important;
+    box-shadow: 0 4px 20px rgba(66, 99, 235, 0.15) !important;
+  }
+  
+  .service-card:hover, .team-card:hover, .stats-card:hover, .contact-card:hover, .contact-info-card:hover {
+    box-shadow: 0 8px 30px rgba(173, 58, 255, 0.25) !important;
+    transform: translateY(-5px) !important;
+    border-color: rgba(173, 58, 255, 0.4) !important;
+  }
+  
+  /* Ensure buttons have good contrast */
+  .btn-primary {
+    background-color: var(--cyber-blue) !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+  
+  .btn-secondary {
+    background-color: var(--cyber-purple) !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+  
+  .btn-outline {
+    background-color: transparent !important;
+    border: 2px solid var(--cyber-blue) !important;
+    color: var(--cyber-blue) !important;
+    font-weight: 600 !important;
+  }
+  
+  .btn-outline:hover {
+    background-color: var(--cyber-blue) !important;
+    color: white !important;
+  }
+}
+
+/* Gradient and effect utilities */
+.gradient-bg {
     background: var(--gradient-primary);
   }
 
@@ -195,6 +369,188 @@
 
   .card-hover {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Section-specific color themes */
+  .hero-section {
+    background: linear-gradient(135deg, #f0f9ff 0%, #fefefe 25%, #faf5ff 50%, #f0f9ff 100%);
+    color: #1f2937;
+  }
+
+  .services-section {
+    background: linear-gradient(135deg, #ecfdf5 0%, #fefefe 25%, #eff6ff 50%, #ecfdf5 100%);
+    color: #064e3b;
+  }
+
+  .about-section {
+    background: linear-gradient(135deg, #fef3c7 0%, #fefefe 25%, #e0e7ff 50%, #fef3c7 100%);
+    color: #92400e;
+  }
+
+  .team-section {
+    background: linear-gradient(135deg, #fce7f3 0%, #fefefe 25%, #f3e8ff 50%, #fce7f3 100%);
+    color: #86198f;
+  }
+
+  .partners-section {
+    background: linear-gradient(135deg, #f0fdfa 0%, #fefefe 25%, #ecfdf5 50%, #f0fdfa 100%);
+    color: #065f46;
+  }
+
+  .contact-section {
+    background: linear-gradient(135deg, #eff6ff 0%, #fefefe 25%, #fef3c7 50%, #eff6ff 100%);
+    color: #1e40af;
+  }
+
+  .careers-section {
+    background: linear-gradient(135deg, #f5f3ff 0%, #fefefe 25%, #fce7f3 50%, #f5f3ff 100%);
+    color: #6b21a8;
+  }
+
+  /* HIGH CONTRAST TEXT COLORS - MAXIMUM VISIBILITY */
+  
+  /* Improved base text styles for all content */
+  body, p, span, div, li {
+    color: var(--cyber-dark) !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+    letter-spacing: -0.01em !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+  }
+  
+  /* Enhanced headings for maximum visibility */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--cyber-dark) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  /* All section titles - strong, dark, readable */
+  .hero-text, .services-text, .about-text, .team-text, .partners-text, .contact-text,
+  .hero-title, .services-title, .about-title, .team-title, .partners-title, .contact-title,
+  .stats-title, .team-title, .partners-title { 
+    color: var(--cyber-dark) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  /* All descriptions - bold gray for maximum readability */
+  .hero-desc, .services-desc, .about-desc, .team-desc, .partners-desc, .contact-desc,
+  .stats-desc { 
+    color: hsl(230 25% 25%) !important; 
+    font-weight: 500 !important;
+  }
+  
+  /* Section-specific title colors for branding */
+  .hero-title { color: var(--cyber-blue) !important; }
+  .services-title { color: var(--cyber-purple) !important; }
+  .about-title { color: var(--cyber-green) !important; }
+  .team-title { color: var(--cyber-orange) !important; }
+  .partners-title { color: var(--cyber-pink) !important; }
+  .contact-title { color: var(--cyber-blue) !important; }
+  
+  /* Stats are always white on colored backgrounds */
+  .stat-value {
+    color: white !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .stat-label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Card content */
+  .services-card-title, .about-card-title, .team-card-name, .stats-label { 
+    color: var(--cyber-dark) !important; 
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  .services-card-text, .about-card-text, .team-card-bio, .team-card-role, .stats-description { 
+    color: #374151 !important; 
+    font-weight: 500 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  /* Special gradient numbers for stats */
+  .stats-number { 
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-weight: 900 !important;
+  }
+
+  /* Partners Section */
+  .partners-title { color: #374151 !important; font-weight: 700; }
+  .partners-desc { color: #4b5563 !important; font-weight: 500; }
+
+  /* Statistics Section */
+  .stats-title { color: #374151 !important; font-weight: 700; }
+  .stats-desc { color: #4b5563 !important; font-weight: 500; }
+
+  /* Team Section */
+  .team-title { color: #374151 !important; font-weight: 700; }
+  .team-desc { color: #4b5563 !important; font-weight: 500; }
+  .careers-text { color: #6b21a8; font-weight: 600; }
+  .careers-accent { color: #be185d; font-weight: 700; }
+
+  /* Professional button styles for each section */
+  .hero-button {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+  }
+
+  .services-button {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #0891b2 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+  }
+
+  .about-button {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #ea580c 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+  }
+
+  .team-button {
+    background: linear-gradient(135deg, #c026d3 0%, #9333ea 50%, #7c3aed 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 25px rgba(192, 38, 211, 0.3);
+  }
+
+  .partners-button {
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #0f766e 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+  }
+
+  .contact-button {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #dc2626 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+  }
+
+  .careers-button {
+    background: linear-gradient(135deg, #7c3aed 0%, #6b21a8 50%, #be185d 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
   }
 
   .card-hover:hover {
@@ -529,7 +885,6 @@
   .nav-link:hover::after {
     width: 100%;
   }
-}
 
 @layer utilities {
   .animate-fade-in {
@@ -843,6 +1198,20 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+/* Optimized infinite scroll animation */
+.animate-scroll {
+  animation: smoothScroll 60s linear infinite;
+}
+
+@keyframes smoothScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .luna-button::before {

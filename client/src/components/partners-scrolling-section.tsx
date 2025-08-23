@@ -43,10 +43,10 @@ export default function PartnersScrollingSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Partners</span> & <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Clients</span>
+          <motion.h2 className="text-4xl md:text-5xl partners-title mb-4">
+            Our <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent font-black">Partners</span> & <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-black">Clients</span>
           </motion.h2>
-          <motion.p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.p className="text-xl partners-desc max-w-3xl mx-auto">
             Trusted by industry leaders and powered by cutting-edge partnerships
           </motion.p>
         </motion.div>
