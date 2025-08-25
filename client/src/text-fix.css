@@ -1,0 +1,169 @@
+/* Text Visibility and Animation Fixes */
+
+/* Force white text on dark backgrounds */
+.bg-gradient-to-br,
+.bg-slate-900,
+.bg-purple-900,
+[class*="from-slate-900"],
+[class*="via-purple-900"],
+[class*="to-slate-900"],
+.dark-section {
+  color: white !important;
+}
+
+.bg-gradient-to-br *,
+.bg-slate-900 *,
+.bg-purple-900 *,
+[class*="from-slate-900"] *,
+[class*="via-purple-900"] *,
+[class*="to-slate-900"] *,
+.dark-section * {
+  color: white !important;
+}
+
+/* Critical text visibility rules - highest priority */
+[class*="bg-gradient-to-br"] *,
+[class*="bg-gradient-to-br"] h1,
+[class*="bg-gradient-to-br"] h2,
+[class*="bg-gradient-to-br"] h3,
+[class*="bg-gradient-to-br"] h4,
+[class*="bg-gradient-to-br"] h5,
+[class*="bg-gradient-to-br"] h6,
+[class*="bg-gradient-to-br"] p,
+[class*="bg-gradient-to-br"] span,
+[class*="bg-gradient-to-br"] div {
+  color: white !important;
+}
+
+/* About section specific fixes */
+#about *,
+#about h1,
+#about h2,
+#about h3,
+#about h4,
+#about h5,
+#about h6,
+#about p,
+#about span {
+  color: white !important;
+}
+
+/* Ensure all headings are visible */
+h1, h2, h3, h4, h5, h6 {
+  color: inherit !important;
+  font-weight: 600 !important;
+}
+
+/* Ensure paragraphs and text elements are visible */
+p, span, div, a {
+  color: inherit !important;
+}
+
+/* Fix text in dark sections specifically */
+.dark-section,
+.dark-section *,
+section[class*="bg-gradient-to-br"] *,
+section[class*="slate-900"] *,
+section[class*="bg-[#"] * {
+  color: white !important;
+}
+
+/* Enhance text readability with better contrast */
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-gray-300 {
+  color: #e5e7eb !important;
+}
+
+.text-gray-200 {
+  color: #f3f4f6 !important;
+}
+
+/* Reset image filters that cause gray boxes */
+img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Specific fix for company logos */
+.dark-section img,
+[class*="bg-[#"] img {
+  filter: none !important;
+  opacity: 0.9 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.dark-section img:hover,
+[class*="bg-[#"] img:hover {
+  opacity: 1 !important;
+}
+
+/* 3D Animation Support */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Smooth transitions for better animations */
+* {
+  transition: color 0.2s ease-in-out;
+}
+
+/* Fix for Framer Motion elements */
+[data-framer-component] {
+  color: inherit !important;
+}
+
+/* Ensure buttons and interactive elements are visible */
+button, 
+.button,
+[role="button"] {
+  color: inherit !important;
+}
+
+/* Fix for Lucide icons */
+svg {
+  color: inherit !important;
+  fill: currentColor !important;
+}
+
+/* Fix for specific background colors */
+[class*="bg-[#0F0A2A]"] *,
+[class*="bg-[#0C0922]"] *,
+[class*="bg-[#1E1250]"] *,
+.luna-card *,
+.luna-card h1,
+.luna-card h2,
+.luna-card h3,
+.luna-card h4,
+.luna-card h5,
+.luna-card h6,
+.luna-card p {
+  color: white !important;
+}
+
+/* Enhanced luna-card text visibility */
+.luna-card {
+  color: white !important;
+}
+
+.luna-card .text-gray-300 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.luna-card .text-white {
+  color: white !important;
+}

@@ -1,11 +1,11 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Target, Users, Rocket, Download, ExternalLink, Shield, Globe, TrendingUp, Award, Clock, CheckCircle } from "lucide-react";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-slate-950 dark-section about-page">
       <Navigation />
       
       {/* Hero Section */}
@@ -16,9 +16,47 @@ export default function About() {
         transition={{ duration: 0.8 }}
       >
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-cyan-900/20"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Enhanced gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-cyan-900/30"></div>
+          
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{ 
+              backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+              backgroundSize: "30px 30px"
+            }}></div>
+          </div>
+          
+          {/* Animated blob effects */}
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          
+          {/* Floating particles */}
+          {Array.from({ length: 12 }).map((_, i) => (
+            <motion.div
+              key={`particle-${i}`}
+              className="absolute w-2 h-2 rounded-full"
+              style={{
+                background: i % 2 === 0 ? 'rgba(139, 92, 246, 0.4)' : 'rgba(59, 130, 246, 0.4)',
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                filter: 'blur(1px)',
+              }}
+              animate={{
+                y: [0, -50, 0],
+                opacity: [0, 0.8, 0],
+                scale: [0, 1, 0]
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 8 + Math.random() * 4,
+                delay: Math.random() * 3,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
@@ -33,7 +71,7 @@ export default function About() {
               </span>{" "}
               Us
             </h1>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto mb-12">
+            <p className="text-2xl text-white/80 max-w-4xl mx-auto mb-12">
               Our IT services ensure Your Success
             </p>
             
@@ -56,7 +94,7 @@ export default function About() {
                     {stat.icon}
                   </div>
                   <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
-                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                  <div className="text-white/70 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -86,7 +124,7 @@ export default function About() {
                 </span>{" "}
                 CyberSpace Technologies
               </h2>
-              <p className="text-xl text-gray-300 leading-relaxed mb-8">
+              <p className="text-xl text-white/80 leading-relaxed mb-8">
                 We at CST absolutely understand the criticality of data protection and the importance of building secure applications without compromising the functionality and business goals.
               </p>
               <div className="space-y-4">
@@ -102,7 +140,7 @@ export default function About() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex items-center text-gray-300"
+                    className="flex items-center text-white/80"
                   >
                     <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
                     {item}
@@ -118,7 +156,7 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="luna-card p-8">
+              <div className="luna-card about-luna-card p-8">
                 <div className="grid grid-cols-2 gap-6">
                   {[
                     { icon: <Shield className="w-12 h-12 text-purple-400" />, title: "Secure", desc: "Enterprise-grade security protocols" },
@@ -136,7 +174,7 @@ export default function About() {
                     >
                       <div className="mb-4">{feature.icon}</div>
                       <h3 className="font-bold text-white mb-2">{feature.title}</h3>
-                      <p className="text-gray-400 text-sm">{feature.desc}</p>
+                      <p className="text-white/70 text-sm">{feature.desc}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -183,13 +221,13 @@ export default function About() {
 
           <div className="grid lg:grid-cols-3 gap-8">
             <motion.div 
-              className="lg:col-span-2 luna-card p-8"
+              className="lg:col-span-2 luna-card about-luna-card p-8"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-lg text-white/80 leading-relaxed">
                 Cyber Space Technologies is a leading IT solutions provider in the United States. We collaborate with industry experts to deliver innovative solutions to complex business challenges. Our services, including Cloud FinOps, Migration, ManageIT, Big Data, Data Science, Business Intelligence, Machine Learning, Artificial Intelligence, and Cyber Security, empower our clients to uncover the value of their data.
               </p>
             </motion.div>
@@ -209,10 +247,10 @@ export default function About() {
                 <motion.div
                   key={stat.label}
                   whileHover={{ scale: 1.05 }}
-                  className="luna-card p-4 text-center"
+                  className="luna-card about-luna-card p-4 text-center"
                 >
                   <div className="text-2xl font-bold text-purple-400 mb-1">{stat.value}</div>
-                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                  <div className="text-white/70 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -294,7 +332,7 @@ export default function About() {
               </span>{" "}
               CYBERSPACE?
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Three key pillars that set us apart in the competitive IT landscape
             </p>
           </motion.div>
@@ -335,7 +373,7 @@ export default function About() {
                 className="group"
               >
                 <motion.div 
-                  className="luna-card p-8 h-full flex flex-col"
+                  className="luna-card about-luna-card p-8 h-full flex flex-col"
                   whileHover={{ y: -5 }}
                 >
                   <motion.div 
@@ -353,7 +391,7 @@ export default function About() {
                   <p className="text-cyan-400 font-medium mb-4 text-sm">
                     {item.shortDesc}
                   </p>
-                  <p className="text-gray-300 leading-relaxed flex-grow">
+                  <p className="text-white/80 leading-relaxed flex-grow">
                     {item.description}
                   </p>
                 </motion.div>
@@ -382,7 +420,7 @@ export default function About() {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto">
               Join 500+ companies worldwide who trust CyberSpace Technologies for their IT transformation journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">

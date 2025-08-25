@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Globe, Zap, Users, Mail, Info, Briefcase, HandHeart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 
 export default function Navigation() {
@@ -37,7 +37,7 @@ export default function Navigation() {
 
   return (
     <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-lg shadow-gray-900/5"
+      className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-xl border-b border-slate-700/50 shadow-lg shadow-black/20"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -77,10 +77,10 @@ export default function Navigation() {
               </div>
               
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-gray-800 group-hover:text-cyber-blue transition-colors duration-300">
+                <h1 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
                   CyberSpace
                 </h1>
-                <p className="text-sm text-gray-500 font-medium">Technologies</p>
+                <p className="text-sm text-gray-300 font-medium">Technologies</p>
               </div>
             </motion.div>
           </Link>
@@ -96,8 +96,8 @@ export default function Navigation() {
                   <motion.div
                     className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-medium group transition-all duration-300 cursor-pointer ${
                       isActive 
-                        ? "text-cyber-blue bg-cyber-blue/10" 
-                        : "text-gray-700 hover:text-cyber-blue hover:bg-cyber-blue/5"
+                        ? "text-purple-400 bg-purple-400/10" 
+                        : "text-gray-300 hover:text-purple-400 hover:bg-purple-400/5"
                     }`}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center space-x-3">
             <Link href="/contact">
               <Button
-                className="px-6 py-2 bg-gradient-to-r from-cyber-blue to-cyber-purple hover:from-cyber-purple hover:to-cyber-blue text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-medium"
+                className="px-6 py-2 bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-medium"
               >
                 <Mail className="w-4 h-4 mr-2" />
                 Get Started
@@ -132,7 +132,7 @@ export default function Navigation() {
           {/* Enhanced Mobile Menu Button */}
           <motion.button
             onClick={toggleMenu}
-            className="lg:hidden p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+            className="lg:hidden p-2 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors duration-200"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -141,9 +141,9 @@ export default function Navigation() {
               transition={{ duration: 0.3 }}
             >
               {isMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
+                <X className="w-6 h-6 text-gray-300" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
+                <Menu className="w-6 h-6 text-gray-300" />
               )}
             </motion.div>
           </motion.button>
@@ -154,7 +154,7 @@ export default function Navigation() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-gray-200/50 shadow-2xl"
+            className="lg:hidden bg-slate-900/98 backdrop-blur-xl border-t border-slate-700/50 shadow-2xl"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -169,8 +169,8 @@ export default function Navigation() {
                       <motion.div
                         className={`flex items-center space-x-3 p-4 rounded-xl font-medium group text-left w-full transition-all duration-300 cursor-pointer ${
                           isActive 
-                            ? "text-cyber-blue bg-cyber-blue/10" 
-                            : "text-gray-700 hover:text-cyber-blue hover:bg-cyber-blue/5"
+                            ? "text-purple-400 bg-purple-400/10" 
+                            : "text-gray-300 hover:text-purple-400 hover:bg-purple-400/5"
                         }`}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -180,7 +180,7 @@ export default function Navigation() {
                         onClick={() => setIsMenuOpen(false)}
                       >
                         <span className={`transition-colors duration-300 ${
-                          isActive ? "text-cyber-purple" : "group-hover:text-cyber-purple"
+                          isActive ? "text-cyan-400" : "group-hover:text-cyan-400"
                         }`}>
                           {item.icon}
                         </span>
@@ -192,7 +192,7 @@ export default function Navigation() {
               </div>
               
               <motion.div 
-                className="mt-6 pt-6 border-t border-gray-200/50"
+                className="mt-6 pt-6 border-t border-slate-700/50"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.6 }}

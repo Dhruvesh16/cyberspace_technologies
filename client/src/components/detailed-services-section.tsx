@@ -1,18 +1,21 @@
-import { ArrowRight, Database, BarChart3, Cloud, Smartphone, Shield, CheckCircle, Zap, Users, Target } from "lucide-react";
+import { ArrowRight, Database, BarChart3, Cloud, Smartphone, Shield, CheckCircle, Zap, Users, Target, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform, useMotionValue, useMotionTemplate, useInView } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import { useRef, useState, useEffect } from "react";
 
 export default function DetailedServicesSection() {
   const mainServices = [
     {
       id: "data-engineering",
-      icon: <Database className="w-12 h-12 text-cyber-green" />,
+      icon: <Database className="w-12 h-12 text-white" />,
       title: "Data Engineering",
       subtitle: "Supercharging your data infrastructure with lightning-fast insights",
       description: "We run all kinds of data services that ensure your success with modern data warehouse modernization, real-time data onboarding, and comprehensive data governance.",
-      gradient: "from-emerald-500 to-teal-500",
+      primaryColor: "#22c55e", // emerald-500
+      secondaryColor: "#14b8a6", // teal-500
+      textColor: "text-emerald-500",
       features: [
         {
           title: "Data Warehouse Modernization",
@@ -79,11 +82,13 @@ export default function DetailedServicesSection() {
     },
     {
       id: "analytics",
-      icon: <BarChart3 className="w-12 h-12 text-cyber-blue" />,
+      icon: <BarChart3 className="w-12 h-12 text-white" />,
       title: "Analytics",
       subtitle: "Everyone in your organization can make an impact with AI",
       description: "CST Cloud AI helps solve your most important business problems end-to-end with prepackaged solutions, putting AI in the hands of those closest to your business.",
-      gradient: "from-blue-500 to-cyan-500",
+      primaryColor: "#3b82f6", // blue-500
+      secondaryColor: "#06b6d4", // cyan-500
+      textColor: "text-blue-500",
       features: [
         {
           title: "Modern Data Analytics",
@@ -131,11 +136,13 @@ export default function DetailedServicesSection() {
     },
     {
       id: "cloud-services",
-      icon: <Cloud className="w-12 h-12 text-cyber-purple" />,
+      icon: <Cloud className="w-12 h-12 text-white" />,
       title: "Cloud Services",
       subtitle: "Preparing for your success with prominent cloud solutions",
       description: "We offer a complete range of cloud services designed to protect your infrastructure, applications and data while providing scalable, cost-effective solutions.",
-      gradient: "from-purple-500 to-violet-500",
+      primaryColor: "#8b5cf6", // purple-500
+      secondaryColor: "#8b5cf6", // violet-500
+      textColor: "text-purple-500",
       features: [
         {
           title: "AWS/Azure/GCP Cloud Infrastructure",
@@ -181,11 +188,13 @@ export default function DetailedServicesSection() {
     },
     {
       id: "app-services",
-      icon: <Smartphone className="w-12 h-12 text-cyber-pink" />,
+      icon: <Smartphone className="w-12 h-12 text-white" />,
       title: "App Services",
       subtitle: "Modern application development and deployment solutions",
       description: "Comprehensive application development services including web apps, mobile applications, and microservices architecture with cutting-edge technologies.",
-      gradient: "from-pink-500 to-rose-500",
+      primaryColor: "#ec4899", // pink-500
+      secondaryColor: "#f43f5e", // rose-500
+      textColor: "text-pink-500",
       features: [
         {
           title: "Reactive and Progressive Web Apps",
@@ -236,11 +245,13 @@ export default function DetailedServicesSection() {
     },
     {
       id: "it-services",
-      icon: <Shield className="w-12 h-12 text-cyber-orange" />,
+      icon: <Shield className="w-12 h-12 text-white" />,
       title: "IT Services",
       subtitle: "Comprehensive IT management and security solutions",
       description: "Full-spectrum IT services to manage, secure, and optimize your technology infrastructure with advanced security measures and business transformation strategies.",
-      gradient: "from-orange-500 to-amber-500",
+      primaryColor: "#f97316", // orange-500
+      secondaryColor: "#f59e0b", // amber-500
+      textColor: "text-orange-500",
       features: [
         {
           title: "IT Management",
@@ -300,22 +311,30 @@ export default function DetailedServicesSection() {
     {
       number: "01",
       title: "Discussion",
-      description: "We meet customers in set place to discuss the details about needs and demands before proposing a plan."
+      description: "We meet customers in set place to discuss the details about needs and demands before proposing a plan.",
+      primaryColor: "#8b5cf6", // purple-500
+      secondaryColor: "#3b82f6" // blue-500
     },
     {
       number: "02", 
       title: "Ideas & Concepts",
-      description: "Our experts come up with all kinds of ideas and initiatives for delivering the best solutions for IT services chosen."
+      description: "Our experts come up with all kinds of ideas and initiatives for delivering the best solutions for IT services chosen.",
+      primaryColor: "#3b82f6", // blue-500
+      secondaryColor: "#06b6d4" // cyan-500
     },
     {
       number: "03",
       title: "Testing & Trying", 
-      description: "After agreeing on the ideas and plans, we will conduct as scheduled and give comments on the results & adaptations."
+      description: "After agreeing on the ideas and plans, we will conduct as scheduled and give comments on the results & adaptations.",
+      primaryColor: "#06b6d4", // cyan-500
+      secondaryColor: "#22c55e" // emerald-500
     },
     {
       number: "04",
       title: "Execute & Install",
-      description: "Once the final plan is approved, everything will be conducted according to the agreed contract."
+      description: "Once the final plan is approved, everything will be conducted according to the agreed contract.",
+      primaryColor: "#22c55e", // emerald-500
+      secondaryColor: "#f97316" // orange-500
     }
   ];
 
@@ -326,27 +345,142 @@ export default function DetailedServicesSection() {
     { number: "1090+", label: "Media Posts" }
   ];
 
+  // Track mouse position for spotlight effect
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  
+  // Refs for scroll animations
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const fadeIn = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  // Handle mouse move for spotlight effect
+  const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    });
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 detailed-services-section">
       {/* Hero Section */}
       <motion.section 
-        className="py-20 relative overflow-hidden bg-gradient-to-br from-gray-50/80 via-white to-cyber-purple/5"
+        ref={heroRef}
+        className="py-20 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
       >
+        {/* Animated Background Effects */}
+        <motion.div 
+          className="absolute inset-0 bg-[#120F26]"
+          style={{ y: backgroundY }}
+        />
+        
+        {/* Radial gradient spotlight */}
+        <motion.div 
+          className="absolute top-1/2 left-1/2 w-[200%] h-[200%] pointer-events-none"
+          animate={{
+            opacity: [0.3, 0.6, 0.3],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          style={{ 
+            background: "radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 30%, transparent 70%)",
+            x: "-50%",
+            y: "-50%",
+          }}
+        />
+        
+        {/* Mouse-following spotlight */}
+        {isHovering && (
+          <motion.div 
+            className="absolute pointer-events-none"
+            animate={{
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            style={{ 
+              left: mousePosition.x,
+              top: mousePosition.y,
+              width: 600,
+              height: 600,
+              borderRadius: "50%",
+              background: "radial-gradient(circle at center, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.05) 40%, transparent 70%)",
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+        )}
+        
+        {/* Grid pattern overlay */}
+        <motion.div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }}
+          animate={{
+            backgroundPosition: ['0px 0px', '50px 50px']
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+        
+        {/* Floating particles */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full opacity-20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0, 0.8, 0],
+              scale: [0, 1, 0]
+            }}
+            transition={{
+              duration: 3 + Math.random() * 5,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            style={{ y: textY, opacity: fadeIn }}
           >
-            <motion.h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Services We <span className="bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-teal bg-clip-text text-transparent font-black">Deliver</span>
+            <motion.h1 
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              Services We <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent font-black">Deliver</span>
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto font-normal leading-relaxed"
+              className="text-lg md:text-xl text-gray-200/80 max-w-4xl mx-auto font-normal leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -365,14 +499,19 @@ export default function DetailedServicesSection() {
             {stats.map((stat, index) => (
               <motion.div 
                 key={stat.label}
-                className="text-center group"
+                className="text-center relative group perspective-1000"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyber-purple to-cyber-pink bg-clip-text text-transparent mb-2 group-hover:from-cyber-blue group-hover:to-cyber-purple transition-all duration-300">
+                <motion.div 
+                  className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-sm -z-10 group-hover:opacity-100 opacity-0 transition-opacity duration-300"
+                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  transition={{ duration: 0.5 }}
+                />
+                <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-gray-200 font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -383,12 +522,63 @@ export default function DetailedServicesSection() {
       {mainServices.map((service, serviceIndex) => (
         <motion.section 
           key={service.id}
-          className={`py-16 relative overflow-hidden ${serviceIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50/70'}`}
+          className={`py-16 relative overflow-hidden ${serviceIndex % 2 === 0 ? 'bg-gradient-to-br from-slate-900 to-purple-900' : 'bg-gradient-to-br from-purple-900 to-blue-900'}`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
+          {/* Background Gradient */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Animated gradient background */}
+            <motion.div 
+              className="absolute inset-0 opacity-30"
+              animate={{
+                background: [
+                  `radial-gradient(circle at 30% 30%, ${service.primaryColor}30 0%, transparent 60%)`,
+                  `radial-gradient(circle at 70% 70%, ${service.secondaryColor}30 0%, transparent 60%)`,
+                  `radial-gradient(circle at 30% 30%, ${service.primaryColor}30 0%, transparent 60%)`
+                ]
+              }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            />
+            
+            {/* Grid pattern */}
+            <motion.div 
+              className="absolute inset-0 opacity-5"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '40px 40px'
+              }}
+            />
+            
+            {/* Floating particles */}
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-white rounded-full opacity-20"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [-10, -40, -10],
+                  opacity: [0, 0.5, 0],
+                  scale: [0, 1, 0]
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 5,
+                  repeat: Infinity,
+                  delay: Math.random() * 5,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
+          </div>
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Service Header */}
             <motion.div 
@@ -399,19 +589,23 @@ export default function DetailedServicesSection() {
               transition={{ duration: 0.8 }}
             >
               <motion.div 
-                className={`w-20 h-20 rounded-xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mx-auto mb-6 shadow-lg`}
+                className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg glossy"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ duration: 0.6 }}
+                style={{ 
+                  background: `linear-gradient(135deg, ${service.primaryColor} 0%, ${service.secondaryColor} 100%)`,
+                  boxShadow: `0 10px 30px -10px ${service.primaryColor}50`
+                }}
               >
                 {service.icon}
               </motion.div>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
                 {service.title}
               </h2>
-              <p className="text-lg text-cyber-blue mb-4 font-medium">
+              <p className={`text-lg ${service.textColor} mb-4 font-medium`}>
                 {service.subtitle}
               </p>
-              <p className="text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base text-gray-300/80 max-w-3xl mx-auto leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
@@ -425,52 +619,63 @@ export default function DetailedServicesSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: featureIndex * 0.1 }}
+                  className="perspective-1000"
                 >
-                  <Card className="h-full hover:shadow-lg transition-all duration-300 border-0 shadow-md bg-white">
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-6">
-                        <span className="text-2xl mr-4">{feature.icon}</span>
-                        <h3 className="text-xl font-bold text-gray-900 leading-tight">{feature.title}</h3>
-                      </div>
-                      <div className="space-y-3">
-                        {feature.details.slice(0, 5).map((detail, detailIndex) => (
-                          <motion.div 
-                            key={detailIndex}
-                            className="flex items-start group hover:bg-gray-50/50 p-2 rounded-lg transition-all duration-200"
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: detailIndex * 0.05 }}
-                          >
-                            <CheckCircle className="w-5 h-5 text-cyber-green mr-3 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-700 leading-relaxed text-sm">{detail}</span>
-                          </motion.div>
-                        ))}
-                        {feature.details.length > 5 && (
-                          <p className="text-xs text-gray-500 italic">+ {feature.details.length - 5} more capabilities</p>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <motion.div
+                    whileHover={{ 
+                      y: -5, 
+                      boxShadow: `0 20px 40px -20px ${service.primaryColor}50`,
+                      borderImage: `linear-gradient(135deg, ${service.primaryColor}50, ${service.secondaryColor}50) 1`
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="h-full"
+                  >
+                    <Card className="h-full border border-white/5 shadow-lg bg-white/5 backdrop-blur-sm overflow-hidden">
+                      <CardContent className="p-6">
+                        <div className="flex items-center mb-6">
+                          <span className="text-2xl mr-4">{feature.icon}</span>
+                          <h3 className="text-xl font-bold text-white leading-tight">{feature.title}</h3>
+                        </div>
+                        <div className="space-y-3">
+                          {feature.details.slice(0, 5).map((detail, detailIndex) => (
+                            <motion.div 
+                              key={detailIndex}
+                              className="flex items-start group hover:bg-white/5 p-2 rounded-lg transition-all duration-200"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.4, delay: detailIndex * 0.05 }}
+                            >
+                              <CheckCircle className="w-5 h-5 text-white/80 mr-3 mt-0.5 flex-shrink-0 group-hover:text-white transition-colors" />
+                              <span className="text-gray-300/90 leading-relaxed text-sm group-hover:text-white/90 transition-colors">{detail}</span>
+                            </motion.div>
+                          ))}
+                          {feature.details.length > 5 && (
+                            <p className="text-xs text-gray-400 italic">+ {feature.details.length - 5} more capabilities</p>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
 
             {/* Specialties */}
             <motion.div 
-              className="text-center bg-gray-50 rounded-2xl p-6"
+              className="text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Additional Specialties</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">Additional Specialties</h3>
               <div className="flex flex-wrap justify-center gap-2">
                 {service.specialties.map((specialty, index) => (
                   <Badge 
                     key={index}
                     variant="secondary" 
-                    className="px-3 py-1 text-sm font-medium bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/20 hover:bg-cyber-blue/20 transition-colors rounded-full"
+                    className="px-3 py-1 text-sm font-medium bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors rounded-full"
                   >
                     {specialty}
                   </Badge>
@@ -483,13 +688,45 @@ export default function DetailedServicesSection() {
 
       {/* Process Section */}
       <motion.section 
-        className="py-24 bg-gradient-to-br from-cyber-purple/5 via-white to-cyber-blue/5"
+        className="py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background effects */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Large spotlight */}
+          <motion.div 
+            className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            animate={{
+              opacity: [0.1, 0.3, 0.1],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            style={{ 
+              background: "radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 30%, transparent 70%)",
+            }}
+          />
+          
+          {/* Grid pattern */}
+          <motion.div 
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px'
+            }}
+            animate={{
+              backgroundPosition: ['0px 0px', '40px 40px']
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             className="text-center mb-20"
             initial={{ opacity: 0, y: 50 }}
@@ -497,10 +734,10 @@ export default function DetailedServicesSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-              How <span className="bg-gradient-to-r from-cyber-blue to-cyber-purple bg-clip-text text-transparent">We Work</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
+              How <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">We Work</span>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300/80 max-w-4xl mx-auto leading-relaxed">
               Our proven 4-step process ensures successful project delivery and client satisfaction
             </p>
           </motion.div>
@@ -513,21 +750,32 @@ export default function DetailedServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="text-center group"
+                className="text-center group perspective-1000"
               >
                 <motion.div 
-                  className="w-20 h-20 rounded-2xl bg-gradient-to-r from-cyber-purple to-cyber-pink flex items-center justify-center mx-auto mb-8 text-white font-bold text-2xl shadow-xl group-hover:scale-110 transition-transform duration-300"
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 text-white font-bold text-2xl shadow-xl group-hover:scale-110 transition-transform duration-300 glossy"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
+                  style={{ 
+                    background: `linear-gradient(135deg, ${step.primaryColor} 0%, ${step.secondaryColor} 100%)`,
+                    boxShadow: `0 10px 30px -10px ${step.primaryColor}80`
+                  }}
                 >
                   {step.number}
                 </motion.div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 group-hover:text-cyber-purple transition-colors">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-6 group-hover:text-purple-400 transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                <p className="text-gray-300/80 leading-relaxed text-lg">
                   {step.description}
                 </p>
+                <motion.div 
+                  className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ height: 0 }}
+                  whileHover={{ height: 'auto' }}
+                >
+                  <div className="h-0.5 w-10 mx-auto bg-gradient-to-r from-purple-400 to-blue-400"></div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -536,45 +784,118 @@ export default function DetailedServicesSection() {
 
       {/* CTA Section */}
       <motion.section 
-        className="py-24 bg-gradient-to-r from-cyber-purple to-cyber-blue text-white relative overflow-hidden"
+        className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-slate-900"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
+        {/* Background animations */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Animated gradient rays */}
+          <motion.div 
+            className="absolute inset-0"
+            animate={{
+              background: [
+                "radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)",
+                "radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)",
+                "radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)"
+              ]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          
+          {/* Floating particles */}
+          {[...Array(10)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full opacity-30"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [-20, -80, -20],
+                opacity: [0, 0.8, 0],
+                scale: [0, 1, 0]
+              }}
+              transition={{
+                duration: 4 + Math.random() * 6,
+                repeat: Infinity,
+                delay: Math.random() * 4,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="relative"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+            {/* Subtle glow effect behind title */}
+            <div 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-32 rounded-full blur-3xl -z-10 opacity-20"
+              style={{ background: 'linear-gradient(90deg, #8b5cf6, #3b82f6)' }}
+            />
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight text-white">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl mb-12 text-gray-300/90 max-w-4xl mx-auto leading-relaxed">
               Let's discuss how our expert team can help you achieve your technology goals with innovative solutions
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button 
-                size="lg"
-                className="px-10 py-5 bg-white text-cyber-purple hover:bg-gray-100 font-semibold text-xl rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group"
-                onClick={() => window.location.href = "/contact"}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className="perspective-1000"
               >
-                <Users className="mr-4 h-7 w-7 group-hover:scale-110 transition-transform" />
-                Get Free Consultation
-              </Button>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="px-10 py-5 border-3 border-white text-white hover:bg-white hover:text-cyber-purple font-semibold text-xl rounded-2xl transition-all duration-300 group"
-                onClick={() => window.location.href = "/about"}
+                <Button 
+                  size="lg"
+                  className="px-10 py-5 bg-white text-[#2D2076] hover:bg-gray-100 font-semibold text-xl rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group glossy"
+                  onClick={() => window.location.href = "/contact"}
+                >
+                  <Users className="mr-4 h-7 w-7 group-hover:scale-110 transition-transform" />
+                  Get Free Consultation
+                </Button>
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className="perspective-1000"
               >
-                <Target className="mr-4 h-7 w-7 group-hover:scale-110 transition-transform" />
-                Learn More About Us
-              </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="px-10 py-5 border-3 border-white text-white hover:bg-white/10 font-semibold text-xl rounded-2xl transition-all duration-300 group backdrop-blur-sm"
+                  onClick={() => window.location.href = "/about"}
+                >
+                  <Target className="mr-4 h-7 w-7 group-hover:scale-110 transition-transform" />
+                  Learn More About Us
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
+        </div>
+        
+        {/* Bottom wave decoration */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+          <svg 
+            className="relative block w-full h-16 text-purple-900 opacity-30"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path 
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C50.61,2.61,191.87,27.57,321.39,56.44Z" 
+              fill="currentColor"
+            />
+          </svg>
         </div>
       </motion.section>
     </div>

@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export default function TeamPreviewSection() {
   // Show only the first 4 team members for the home page preview

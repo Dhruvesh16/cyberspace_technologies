@@ -1,6 +1,6 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { 
   MapPin, 
   Clock, 
@@ -195,12 +195,12 @@ const locations = [
 
 export default function Careers() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 careers-page-section">
       <Navigation />
       
       {/* Hero Section */}
       <motion.section 
-        className="pt-32 pb-16 relative overflow-hidden"
+        className="py-20 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -255,7 +255,7 @@ export default function Careers() {
 
       {/* Why Work With Us */}
       <motion.section 
-        className="py-16 relative overflow-hidden"
+        className="py-16 relative overflow-hidden bg-gradient-to-br from-purple-900 to-slate-900"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -301,7 +301,7 @@ export default function Careers() {
                   <h3 className="text-lg font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-white/90 text-sm leading-relaxed">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -313,7 +313,7 @@ export default function Careers() {
 
       {/* Current Openings */}
       <motion.section 
-        className="py-16 relative overflow-hidden bg-gradient-to-r from-purple-900/10 to-cyan-900/10"
+        className="py-16 relative overflow-hidden bg-gradient-to-br from-slate-900 to-blue-900"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -354,14 +354,14 @@ export default function Careers() {
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                     <div className="mb-4 lg:mb-0">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                        <h3 className="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
                           {job.title}
                         </h3>
-                        <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full text-sm text-cyan-400 font-medium">
+                        <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full text-sm text-cyan-600 font-medium">
                           {job.department}
                         </span>
                       </div>
-                      <div className="flex flex-wrap gap-4 text-gray-400 text-sm">
+                      <div className="flex flex-wrap gap-4 text-gray-700 text-sm">
                         <div className="flex items-center">
                           <MapPin className="w-4 h-4 mr-1" />
                           {job.location}
@@ -391,21 +391,21 @@ export default function Careers() {
                     </motion.a>
                   </div>
                   
-                  <p className="text-gray-300 mb-4 leading-relaxed text-sm">
+                  <p className="text-gray-700 mb-4 leading-relaxed text-sm">
                     {job.description}
                   </p>
                   
                   <div>
-                    <h4 className="text-white font-semibold mb-2 text-sm">Requirements:</h4>
+                    <h4 className="text-gray-800 font-semibold mb-2 text-sm">Requirements:</h4>
                     <ul className="space-y-1">
                       {job.requirements.slice(0, 3).map((req, idx) => (
-                        <li key={idx} className="flex items-start text-gray-300 text-sm">
-                          <CheckCircle className="w-4 h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <li key={idx} className="flex items-start text-gray-700 text-sm">
+                          <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
                           {req}
                         </li>
                       ))}
                       {job.requirements.length > 3 && (
-                        <li className="text-gray-400 text-sm">
+                        <li className="text-gray-600 text-sm">
                           + {job.requirements.length - 3} more requirements
                         </li>
                       )}
@@ -420,7 +420,7 @@ export default function Careers() {
 
       {/* Our Locations */}
       <motion.section 
-        className="py-16 relative overflow-hidden"
+        className="py-16 relative overflow-hidden bg-gradient-to-br from-purple-900 to-slate-900"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -466,8 +466,8 @@ export default function Careers() {
                           <Building className="w-4 h-4 text-cyan-400 mr-2" />
                           <h4 className="font-semibold text-white text-sm">{office.city}</h4>
                         </div>
-                        <p className="text-gray-400 text-xs mb-1">{office.address}</p>
-                        <div className="flex items-center text-gray-400 text-xs">
+                        <p className="text-gray-300 text-xs mb-1">{office.address}</p>
+                        <div className="flex items-center text-gray-300 text-xs">
                           <Phone className="w-3 h-3 mr-1" />
                           {office.phone}
                         </div>
@@ -483,13 +483,12 @@ export default function Careers() {
 
       {/* CTA Section */}
       <motion.section 
-        className="py-16 relative overflow-hidden bg-gradient-to-r from-purple-900/20 to-cyan-900/20"
+        className="py-16 relative overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-slate-900"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}

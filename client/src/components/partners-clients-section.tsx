@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { useLocation } from "wouter";
 
 export default function PartnersClientsSection() {
@@ -94,7 +94,7 @@ export default function PartnersClientsSection() {
   return (
     <motion.section 
       id="partners-clients" 
-      className="py-24 relative overflow-hidden bg-gradient-to-br from-gray-50/80 via-white to-cyber-purple/5"
+      className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -145,10 +145,10 @@ export default function PartnersClientsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <motion.h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our <span className="bg-gradient-to-r from-cyber-purple to-cyber-pink bg-clip-text text-transparent">Partners</span> & <span className="bg-gradient-to-r from-cyber-blue to-cyber-teal bg-clip-text text-transparent">Clients</span>
           </motion.h2>
-          <motion.p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+          <motion.p className="text-xl text-white/90 max-w-3xl mx-auto font-medium">
             {isHomePage 
               ? "Trusted collaborations driving innovation and excellence in technology" 
               : "Building lasting partnerships and delivering exceptional solutions to leading organizations worldwide"
@@ -178,7 +178,7 @@ export default function PartnersClientsSection() {
                     e.currentTarget.style.transform = "scale(1)";
                   }}
                 >
-                  <div className="w-full h-full bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 flex flex-col items-center justify-center group-hover:shadow-xl group-hover:shadow-cyber-purple/20 transition-all duration-300 group-hover:border-cyber-purple/30 transform-gpu">
+                  <div className="w-full h-full bg-white/95 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 flex flex-col items-center justify-center group-hover:shadow-xl group-hover:shadow-cyber-purple/20 transition-all duration-300 group-hover:border-cyber-purple/30 transform-gpu">
                     <div className="w-full h-16 flex items-center justify-center mb-3">
                       <img 
                         src={entity.logo} 
@@ -196,7 +196,7 @@ export default function PartnersClientsSection() {
                       />
                     </div>
                     <div className="text-center">
-                      <h3 className="text-sm font-semibold text-gray-800 mb-1 group-hover:text-cyber-purple transition-colors duration-300">
+                      <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-cyber-purple transition-colors duration-300">
                         {entity.name}
                       </h3>
                       <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
@@ -214,8 +214,8 @@ export default function PartnersClientsSection() {
           </div>
 
           {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-gray-50/80 via-gray-50/60 to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-gray-50/80 via-gray-50/60 to-transparent pointer-events-none z-10" />
+          <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-slate-900 via-slate-900/60 to-transparent pointer-events-none z-10" />
+          <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-slate-900 via-slate-900/60 to-transparent pointer-events-none z-10" />
         </div>
 
         {/* Stats Row */}
@@ -236,7 +236,7 @@ export default function PartnersClientsSection() {
             >
               {allEntities.filter(e => e.type === 'client').length}+
             </motion.div>
-            <div className="text-gray-600 font-medium">Trusted Clients</div>
+            <div className="text-white font-medium">Trusted Clients</div>
           </div>
           <div className="text-center">
             <motion.div 
@@ -248,7 +248,7 @@ export default function PartnersClientsSection() {
             >
               {allEntities.filter(e => e.type === 'partner').length}+
             </motion.div>
-            <div className="text-gray-600 font-medium">Strategic Partners</div>
+            <div className="text-white font-medium">Strategic Partners</div>
           </div>
           <div className="text-center">
             <motion.div 
@@ -260,7 +260,7 @@ export default function PartnersClientsSection() {
             >
               50+
             </motion.div>
-            <div className="text-gray-600 font-medium">Projects Delivered</div>
+            <div className="text-white font-medium">Projects Delivered</div>
           </div>
           <div className="text-center">
             <motion.div 
@@ -272,7 +272,7 @@ export default function PartnersClientsSection() {
             >
               100%
             </motion.div>
-            <div className="text-gray-600 font-medium">Client Satisfaction</div>
+            <div className="text-white font-medium">Client Satisfaction</div>
           </div>
         </motion.div>
       </div>

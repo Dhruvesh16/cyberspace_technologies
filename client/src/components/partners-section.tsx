@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function PartnersSection() {
@@ -9,43 +9,43 @@ export default function PartnersSection() {
     { 
       name: "Johnson & Johnson", 
       logo: "https://cyberspaceinc.com/wp-content/uploads/2023/02/johnson.jpg", 
-      color: "from-cyber-blue to-cyber-purple",
+      color: "from-blue-600 to-purple-600",
       category: "Healthcare"
     },
     { 
       name: "IDEXX", 
       logo: "https://cyberspaceinc.com/wp-content/uploads/2023/02/idexx.jpg", 
-      color: "from-cyber-teal to-cyber-green",
+      color: "from-teal-600 to-emerald-600",
       category: "Veterinary Technology"
     },
     { 
       name: "Newell Brands", 
       logo: "https://cyberspaceinc.com/wp-content/uploads/2023/02/newell.jpg", 
-      color: "from-cyber-purple to-cyber-pink",
+      color: "from-purple-600 to-pink-600",
       category: "Consumer Goods"
     },
     { 
       name: "Verisk", 
       logo: "https://cyberspaceinc.com/wp-content/uploads/2023/04/verisk.png", 
-      color: "from-cyber-teal to-cyber-blue",
+      color: "from-teal-600 to-blue-600",
       category: "Data Analytics"
     },
     { 
       name: "Client 2", 
       logo: "https://cyberspaceinc.com/wp-content/uploads/2024/05/2.-Logo.png", 
-      color: "from-cyber-purple to-cyber-orange",
+      color: "from-purple-600 to-orange-600",
       category: "Technology"
     },
     { 
       name: "Client 3", 
       logo: "https://cyberspaceinc.com/wp-content/uploads/2024/05/3.-Logo.png", 
-      color: "from-cyber-green to-cyber-teal",
+      color: "from-emerald-600 to-teal-600",
       category: "Finance"
     },
     { 
       name: "Client 5", 
       logo: "https://cyberspaceinc.com/wp-content/uploads/2024/05/5.-Logo.png", 
-      color: "from-cyber-blue to-cyber-pink",
+      color: "from-blue-600 to-pink-600",
       category: "Enterprise"
     }
   ];
@@ -126,7 +126,7 @@ export default function PartnersSection() {
   return (
     <motion.section 
       id="partners" 
-      className="py-24 relative overflow-hidden bg-gradient-to-br from-gray-50/80 via-white to-cyber-purple/5"
+      className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 partners-page-section"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -161,12 +161,12 @@ export default function PartnersSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6 partners-title">
-            Our <span className="bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-teal bg-clip-text text-transparent font-black">Partners</span>
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            Our <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 bg-clip-text text-transparent font-black">Partners</span>
           </h2>
-          <p className="text-2xl text-gray-600 max-w-4xl mx-auto font-medium partners-desc">
-            Trusted by <span className="font-bold text-cyber-blue">industry leaders</span> and powered by{" "}
-            <span className="font-bold text-cyber-purple">cutting-edge technologies</span>
+          <p className="text-2xl text-white/90 max-w-4xl mx-auto font-medium">
+            Trusted by <span className="font-bold text-cyan-400">industry leaders</span> and powered by{" "}
+            <span className="font-bold text-purple-400">cutting-edge technologies</span>
           </p>
         </motion.div>
 
@@ -178,7 +178,7 @@ export default function PartnersSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">Trusted Clients</h3>
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">Trusted Clients</h3>
           
           <div className="relative">
             <div className="overflow-hidden">
@@ -234,7 +234,7 @@ export default function PartnersSection() {
                             <h4 className="text-xl font-semibold text-gray-800 group-hover:text-purple-600 transition-colors mb-2">
                               {client.name}
                             </h4>
-                            <p className="text-gray-600 text-sm font-medium">{client.category}</p>
+                            <p className="text-gray-700 text-sm font-medium">{client.category}</p>
                           </div>
                         </motion.div>
                       ))}
@@ -247,14 +247,14 @@ export default function PartnersSection() {
             {/* Optimized Carousel Controls */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white/90 hover:bg-white border-2 border-purple-200 hover:border-purple-400 rounded-full flex items-center justify-center text-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white/95 hover:bg-white border-2 border-purple-300 hover:border-purple-500 rounded-full flex items-center justify-center text-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl z-10"
               style={{ willChange: "transform, box-shadow" }}
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white/90 hover:bg-white border-2 border-purple-200 hover:border-purple-400 rounded-full flex items-center justify-center text-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white/95 hover:bg-white border-2 border-purple-300 hover:border-purple-500 rounded-full flex items-center justify-center text-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl z-10"
               style={{ willChange: "transform, box-shadow" }}
             >
               <ChevronRight className="w-6 h-6" />
@@ -284,7 +284,7 @@ export default function PartnersSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">Technology Partners</h3>
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">Technology Partners</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {partners.map((partner, index) => (
@@ -331,7 +331,7 @@ export default function PartnersSection() {
                       <h4 className="text-lg font-semibold text-gray-800 group-hover:text-cyan-600 transition-colors duration-200">
                         {partner.name}
                       </h4>
-                      <p className="text-gray-600 text-sm font-medium">{partner.description}</p>
+                      <p className="text-gray-700 text-sm font-medium">{partner.description}</p>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { 
   MapPin, 
   Clock, 

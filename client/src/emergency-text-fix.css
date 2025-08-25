@@ -1,0 +1,403 @@
+/* Emergency Text Visibility Fix - Highest Priority */
+
+/* Universal text visibility on dark backgrounds */
+section[class*="bg-gradient"] *,
+section[class*="bg-slate"] *,
+section[class*="bg-purple"] *,
+section[class*="bg-black"] *,
+.dark-section *,
+#about *,
+.luna-card *,
+.contact-section *,
+.detailed-services-section *,
+.team-page-section *,
+.partners-page-section *,
+.careers-page-section * {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Contact section specific overrides */
+.contact-section .contact-info-card h4,
+.contact-section .contact-info-card p {
+  color: #1f2937 !important;
+  text-shadow: none !important;
+}
+
+.contact-section .contact-card h3,
+.contact-section .contact-card label {
+  color: #1f2937 !important;
+  text-shadow: none !important;
+}
+
+/* Additional contact card overrides */
+.contact-info-card * {
+  color: #1f2937 !important;
+  text-shadow: none !important;
+}
+
+.contact-info-card .text-cyan-600 {
+  color: #0891b2 !important;
+}
+
+.contact-info-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Team card overrides for dark text on white cards */
+.team-page-section .bg-white\/95 *,
+.team-page-section .bg-white *,
+section[class*="bg-gradient"] .bg-white\/95 *,
+section[class*="bg-gradient"] .bg-white * {
+  color: #1f2937 !important;
+  text-shadow: none !important;
+}
+
+.team-page-section .text-purple-600 {
+  color: #7c3aed !important;
+}
+
+.team-page-section .text-gray-700,
+.team-page-section .text-gray-800 {
+  color: #374151 !important;
+}
+
+/* Partners page card overrides for dark text on white cards */
+.partners-page-section .luna-card *,
+section[class*="bg-gradient"] .luna-card * {
+  color: #1f2937 !important;
+  text-shadow: none !important;
+}
+
+.partners-page-section .text-cyan-600 {
+  color: #0891b2 !important;
+}
+
+.partners-page-section .text-gray-700,
+.partners-page-section .text-gray-800 {
+  color: #374151 !important;
+}
+
+/* Careers page overrides - Force white backgrounds */
+.careers-page-section .luna-card {
+  background: white !important;
+  backdrop-filter: none !important;
+  border: 1px solid rgba(147, 51, 234, 0.2) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.careers-page-section .luna-card:hover {
+  background: white !important;
+  border-color: rgba(147, 51, 234, 0.4) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* All text in careers luna-cards should be dark */
+.careers-page-section .luna-card *,
+.careers-page-section .luna-card h1,
+.careers-page-section .luna-card h2,
+.careers-page-section .luna-card h3,
+.careers-page-section .luna-card h4,
+.careers-page-section .luna-card p,
+.careers-page-section .luna-card span,
+.careers-page-section .luna-card div {
+  color: #1f2937 !important;
+  text-shadow: none !important;
+}
+
+/* Override any glassmorphism or gradient backgrounds on careers page */
+.careers-page-section .luna-card[style*="background"] {
+  background: white !important;
+}
+
+.careers-page-section .luna-card::before,
+.careers-page-section .luna-card::after {
+  display: none !important;
+}
+
+/* Specific accent colors for careers page */
+.careers-page-section .luna-card .text-purple-400 {
+  color: #c084fc !important;
+}
+
+.careers-page-section .luna-card .text-cyan-400 {
+  color: #22d3ee !important;
+}
+
+.careers-page-section .luna-card .text-green-400 {
+  color: #4ade80 !important;
+}
+
+/* Contact section fixes - ensure white boxes with black text */
+.contact-section .contact-card,
+.contact-section .contact-info-card {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 2px solid rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.contact-section .contact-card *,
+.contact-section .contact-info-card * {
+  color: #1f2937 !important;
+}
+
+.contact-section .contact-card h3,
+.contact-section .contact-info-card h4 {
+  color: #111827 !important;
+  font-weight: 700 !important;
+}
+
+.contact-section .contact-card label {
+  color: #374151 !important;
+  font-weight: 600 !important;
+}
+
+.contact-section .contact-card input,
+.contact-section .contact-card textarea {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(59, 130, 246, 0.4) !important;
+  color: #111827 !important;
+}
+
+.contact-section .contact-card input::placeholder,
+.contact-section .contact-card textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Contact info specific colors */
+.contact-section .text-cyan-600 {
+  color: #0891b2 !important;
+}
+
+/* Global luna-card override - force white backgrounds everywhere */
+html .luna-card {
+  background: white !important;
+  color: #1f2937 !important;
+  border: 1px solid rgba(147, 51, 234, 0.2) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: none !important;
+}
+
+html .luna-card * {
+  color: #1f2937 !important;
+}
+
+html .luna-card:hover {
+  background: white !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  border-color: rgba(147, 51, 234, 0.4) !important;
+}
+
+/* About section exception - dark glassmorphism cards with white text */
+.dark-section .luna-card,
+#about .luna-card {
+  background: linear-gradient(135deg, 
+    rgba(188, 116, 255, 0.2) 0%, 
+    rgba(34, 211, 238, 0.1) 50%, 
+    rgba(188, 116, 255, 0.2) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(188, 116, 255, 0.3) !important;
+}
+
+.dark-section .luna-card *,
+#about .luna-card * {
+  color: white !important;
+}
+
+.dark-section .luna-card:hover,
+#about .luna-card:hover {
+  border-color: rgba(188, 116, 255, 0.5) !important;
+  box-shadow: 0 0 30px rgba(188, 116, 255, 0.3) !important;
+}
+
+/* ABOUT PAGE SPECIFIC OVERRIDES - HIGHEST PRIORITY */
+.about-page .luna-card {
+  background: linear-gradient(135deg, 
+    rgba(30, 27, 75, 0.8) 0%, 
+    rgba(88, 28, 135, 0.7) 50%, 
+    rgba(30, 27, 75, 0.8) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(188, 116, 255, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+.about-page .luna-card:hover {
+  border-color: rgba(188, 116, 255, 0.6) !important;
+  box-shadow: 0 0 40px rgba(188, 116, 255, 0.4) !important;
+  transform: translateY(-5px) !important;
+}
+
+/* Force ALL text in about page luna-cards to be white */
+.about-page .luna-card,
+.about-page .luna-card *,
+.about-page .luna-card h1,
+.about-page .luna-card h2,
+.about-page .luna-card h3,
+.about-page .luna-card h4,
+.about-page .luna-card h5,
+.about-page .luna-card h6,
+.about-page .luna-card p,
+.about-page .luna-card span,
+.about-page .luna-card div,
+.about-page .luna-card text {
+  color: white !important;
+  background: none !important;
+}
+
+/* Specific overrides for accent colors */
+.about-page .luna-card .text-purple-400 {
+  color: #c084fc !important;
+}
+
+.about-page .luna-card .text-cyan-400 {
+  color: #22d3ee !important;
+}
+
+.about-page .luna-card .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.about-page .luna-card .text-white\/80 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ============================================ */
+/* FINAL OVERRIDES - MAXIMUM PRIORITY */
+/* ============================================ */
+
+/* About page luna-cards - FINAL OVERRIDE */
+html body .about-page .luna-card {
+  background: linear-gradient(135deg, 
+    rgba(30, 27, 75, 0.9) 0%, 
+    rgba(88, 28, 135, 0.8) 50%, 
+    rgba(30, 27, 75, 0.9) 100%) !important;
+  backdrop-filter: blur(25px) !important;
+  border: 2px solid rgba(188, 116, 255, 0.5) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Force white text - FINAL OVERRIDE */
+html body .about-page .luna-card *,
+html body .about-page .luna-card h1,
+html body .about-page .luna-card h2,
+html body .about-page .luna-card h3,
+html body .about-page .luna-card h4,
+html body .about-page .luna-card p,
+html body .about-page .luna-card span,
+html body .about-page .luna-card div {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* About luna card specific class - ULTIMATE OVERRIDE */
+.about-luna-card {
+  background: linear-gradient(135deg, 
+    rgba(30, 27, 75, 0.95) 0%, 
+    rgba(88, 28, 135, 0.85) 50%, 
+    rgba(30, 27, 75, 0.95) 100%) !important;
+  backdrop-filter: blur(30px) !important;
+  border: 2px solid rgba(188, 116, 255, 0.6) !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+.about-luna-card * {
+  color: white !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+.about-luna-card:hover {
+  border-color: rgba(188, 116, 255, 0.8) !important;
+  box-shadow: 0 0 50px rgba(188, 116, 255, 0.5) !important;
+  transform: translateY(-8px) !important;
+}
+
+/* Ultra-specific override for all luna-cards */
+body * .luna-card,
+div .luna-card,
+section .luna-card {
+  background: white !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  color: #1f2937 !important;
+}
+
+body * .luna-card *,
+div .luna-card *,
+section .luna-card * {
+  color: #1f2937 !important;
+}
+
+/* Force all backgrounds to white with maximum specificity */
+.luna-card[style],
+.luna-card[class] {
+  background: white !important;
+  background-image: none !important;
+}
+
+.careers-page-section .text-purple-600,
+.careers-page-section .text-cyan-600 {
+  color: #7c3aed !important;
+}
+
+.careers-page-section .text-gray-700,
+.careers-page-section .text-gray-800 {
+  color: #374151 !important;
+}
+
+.careers-page-section .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.careers-page-section .text-green-600 {
+  color: #059669 !important;
+}
+
+/* Specific overrides for job cards */
+.careers-page-section .luna-card h3,
+.careers-page-section .luna-card h4 {
+  color: #1f2937 !important;
+}
+
+.careers-page-section .luna-card p,
+.careers-page-section .luna-card li {
+  color: #374151 !important;
+}
+
+/* Specific overrides for common classes */
+.text-gray-300,
+.text-gray-400,
+.text-gray-500 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+/* Luna card enhanced visibility */
+.luna-card {
+  background: linear-gradient(135deg, 
+    rgba(50, 50, 70, 0.8) 0%, 
+    rgba(70, 50, 90, 0.6) 50%, 
+    rgba(50, 50, 70, 0.8) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.luna-card:hover {
+  background: linear-gradient(135deg, 
+    rgba(60, 60, 80, 0.9) 0%, 
+    rgba(80, 60, 100, 0.7) 50%, 
+    rgba(60, 60, 80, 0.9) 100%) !important;
+}
+
+/* Force visibility for specific elements */
+h1, h2, h3, h4, h5, h6 {
+  color: white !important;
+}
+
+p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
